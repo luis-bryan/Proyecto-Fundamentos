@@ -58,6 +58,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		columnas=Integer.parseInt(aux2);
 		VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas);
 		setVisible(false);
+		ventanaMatriz.pack();
 		ventanaMatriz.setVisible(true);
 	}
 }

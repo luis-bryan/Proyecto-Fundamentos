@@ -12,14 +12,13 @@ public class VentanaMatriz extends JFrame{
   public VentanaMatriz(int tamX, int tamY){
     x = tamX;
     y = tamY;
-    Datos datos = new Datos();
+    Datos datos = new Datos(x,y);
     matriz = new Matriz(x,y);
-
     setSize(800, 600);
     setResizable(true);
-    setLayout(new GridLayout(1,2));
-    add(datos);
-    add(matriz);
+    setLayout(new BorderLayout());
+    add(datos, BorderLayout.WEST);
+    add(matriz, BorderLayout.CENTER);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(false);

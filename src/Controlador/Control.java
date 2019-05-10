@@ -8,5 +8,6 @@ public class Control {
 
 	public Control() {
 		ventanaPrincipal = new VentanaPrincipal();
+		ventanaPrincipal.pack();
 	}
 }
