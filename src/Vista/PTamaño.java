@@ -11,15 +11,15 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-public class PTamaño extends JPanel {
+public class PTamaÃ±o extends JPanel {
 	JTextField campo_numero1;
 	JTextField campo_numero2;
 	JLabel Filas;
 	JLabel Columnas;
 
-	public PTamaño() {
+	public PTamaÃ±o() {
 		setBackground(Color.WHITE);
-		setBorder(new CompoundBorder(new EmptyBorder(0, 0, 5, 0), new TitledBorder("TAMAÑO")));
+		setBorder(new CompoundBorder(new EmptyBorder(0, 0, 5, 0), new TitledBorder("TAMAÃ‘O")));
 		campo_numero1 = new JTextField(10);
 		campo_numero2 = new JTextField(10);
 		Filas = new JLabel("FILAS:");

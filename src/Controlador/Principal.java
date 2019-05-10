@@ -6,7 +6,7 @@ public class Principal {
   private VentanaMatriz v;
 
   public Principal(){
-   v = new VentanaMatriz();
+   v = new VentanaMatriz(5,5);
   }
 
 }
