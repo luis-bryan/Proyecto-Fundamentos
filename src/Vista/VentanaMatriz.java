@@ -6,13 +6,12 @@ import java.awt.*;
 public class VentanaMatriz extends JFrame{
   int x = 0;
   int y = 0;
-
+  JPanel contenedor;
   Matriz matriz;
   public VentanaMatriz(int tamX, int tamY, Datos datos){
     x = tamX;
     y = tamY;
     matriz = new Matriz(x,y);
-    matriz.setPreferredSize(new Dimension(300,500));
     setResizable(true);
     setLayout(new BorderLayout());
     add(datos, BorderLayout.WEST);
