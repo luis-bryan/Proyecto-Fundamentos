@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class VentanaPrincipal extends JFrame implements ActionListener {
 	PTamaño pTamaño;
@@ -46,12 +47,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 	private void actionListener(VentanaPrincipal escuchador) {
 		pBoton.getBoton_empezar().addActionListener(escuchador);
-
-
 	}
 	public void actionPerformed(ActionEvent e) {
 		int filas=0;
 		int columnas=0;
+
 		int objetivos = 0;
 		int tormentosas = 0;
 		int letales = 0;
@@ -71,11 +71,24 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		muros = Integer.parseInt(auxm);
 
 		Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
-		VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos);
+		
+		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
+			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos);
+			setVisible(false);
+			ventanaMatriz.pack();
+			ventanaMatriz.setVisible(true);
+			ventanaMatriz.pack();
+			ventanaMatriz.setSize(500,500);
+			ventanaMatriz.setVisible(true);
+		}else if(filas<=20 || filas >=5){
+			JOptionPane.showMessageDialog(null, "El numero "+filas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+		}else if(columnas<=20 || columnas>=5) {
+			JOptionPane.showMessageDialog(null, "El numero "+columnas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);	
+		}
+		
 
 		setVisible(false);
-		ventanaMatriz.pack();
-		ventanaMatriz.setSize(500,500);
-		ventanaMatriz.setVisible(true);
+
 	}
+
 }
