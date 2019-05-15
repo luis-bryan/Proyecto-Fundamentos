@@ -10,7 +10,7 @@ public class Datos extends JPanel {
     setBackground(Color.WHITE);
     setLayout(new GridLayout(7,1));
 
-    aux = new JLabel("Filas: " + filas);
+    aux = new JLabel("Filas: \n" + filas);
     add(aux);
     aux = new JLabel("\nColumnas: \t" + columnas);
     add(aux);
