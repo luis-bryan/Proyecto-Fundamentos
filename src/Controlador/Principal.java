@@ -7,6 +7,6 @@ public class Principal {
 
   public Principal(){
    v = new VentanaMatriz(5,5);
+   
   }
-
 }

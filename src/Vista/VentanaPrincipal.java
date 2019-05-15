@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class VentanaPrincipal extends JFrame implements ActionListener {
 	PTamaño pTamaño;
@@ -46,8 +47,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 	private void actionListener(VentanaPrincipal escuchador) {
 		pBoton.getBoton_empezar().addActionListener(escuchador);
-
-
 	}
 	public void actionPerformed(ActionEvent e) {
 		int filas=0;
@@ -56,9 +55,16 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		filas=Integer.parseInt(aux1);
 		String aux2=pTamaño.getCampo_numero2().getText();
 		columnas=Integer.parseInt(aux2);
-		VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas);
-		setVisible(false);
-		ventanaMatriz.pack();
-		ventanaMatriz.setVisible(true);
+		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
+			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas);
+			setVisible(false);
+			ventanaMatriz.pack();
+			ventanaMatriz.setVisible(true);
+		}else if(filas<=20 || filas >=5){
+			JOptionPane.showMessageDialog(null, "El numero "+filas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+		}else if(columnas<=20 || columnas>=5) {
+			JOptionPane.showMessageDialog(null, "El numero "+columnas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);	
+		}
 	}
+
 }
