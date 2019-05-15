@@ -87,7 +87,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		}
 		
 
-		setVisible(false);
+		setVisible(true);
 
 	}
 
