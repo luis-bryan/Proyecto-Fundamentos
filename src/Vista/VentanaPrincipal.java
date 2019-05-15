@@ -51,20 +51,44 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int filas=0;
 		int columnas=0;
-		String aux1=pTamaño.getCampo_numero1().getText();
-		filas=Integer.parseInt(aux1);
-		String aux2=pTamaño.getCampo_numero2().getText();
-		columnas=Integer.parseInt(aux2);
+
+		int objetivos = 0;
+		int tormentosas = 0;
+		int letales = 0;
+		int muros = 0;
+
+		String auxf = pTamaño.getCampo_numero1().getText();
+		filas=Integer.parseInt(auxf);
+		String auxc = pTamaño.getCampo_numero2().getText();
+		columnas=Integer.parseInt(auxc);
+		String auxo = pObjetivos.getCampo_numero1().getText();
+		objetivos = Integer.parseInt(auxo);
+		String auxt = pBestias.getCampo_numero1().getText();
+		tormentosas = Integer.parseInt(auxt);
+		String auxl = pBestias.getCampo_numero2().getText();
+		letales = Integer.parseInt(auxl);
+		String auxm = pMuros.getCampo_numero1().getText();
+		muros = Integer.parseInt(auxm);
+
+		Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
+		
 		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
-			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas);
+			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos);
 			setVisible(false);
 			ventanaMatriz.pack();
+			ventanaMatriz.setVisible(true);
+			ventanaMatriz.pack();
+			ventanaMatriz.setSize(500,500);
 			ventanaMatriz.setVisible(true);
 		}else if(filas<=20 || filas >=5){
 			JOptionPane.showMessageDialog(null, "El numero "+filas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 		}else if(columnas<=20 || columnas>=5) {
 			JOptionPane.showMessageDialog(null, "El numero "+columnas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);	
 		}
+		
+
+		setVisible(false);
+
 	}
 
 }
