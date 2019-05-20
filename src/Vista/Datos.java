@@ -7,20 +7,20 @@ public class Datos extends JPanel {
   JLabel aux;
 
   public Datos(int filas, int columnas, int objetivos, int tormentosas, int letales, int muros) {
-    setBackground(Color.RED);
-    setLayout(new GridLayout(7,1));
+    setBackground(Color.cyan);
+    setLayout(null);
 
-    aux = new JLabel("Filas: " + filas);
-    add(aux);
-    aux = new JLabel("Columnas: " + columnas);
-    add(aux);
-    aux = new JLabel("Objetivos: " + objetivos);
-    add(aux);
-    aux = new JLabel("Bestias Tormentosas: " + tormentosas);
-    add(aux);
-    aux = new JLabel("Bestias Letales: " + letales);
-    add(aux);
-    aux = new JLabel("Muros: " + muros);
-    add(aux);
+    aux = new JLabel("<html> Filas: <br>" + filas + "</html>");
+    add(aux).setBounds(10,100,150,30);
+    aux = new JLabel("<html>Columnas:<br> " + columnas+"</html>");
+    add(aux).setBounds(10,200,150,30);
+    aux = new JLabel("<html>Objetivos: <br>" + objetivos+"</html>");
+    add(aux).setBounds(10,300,150,30);
+    aux = new JLabel("<html>Bestias Tormentosas: <br>" + tormentosas+"</html>");
+    add(aux).setBounds(10,400,200,30);
+    aux = new JLabel("<html>Bestias Letales: <br>" + letales+"</html>");
+    add(aux).setBounds(10,500,150,30);
+    aux = new JLabel("<html>Muros:<br> " + muros+"</html>");
+    add(aux).setBounds(10,600,150,30);
   }
 }
