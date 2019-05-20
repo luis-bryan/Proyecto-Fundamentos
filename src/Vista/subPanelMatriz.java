@@ -16,6 +16,6 @@ public class subPanelMatriz extends JPanel{
 	}
 	public void setMatriz(Matriz matriz) {
 		this.matriz = matriz;
-	}
+	} 
 	
 }

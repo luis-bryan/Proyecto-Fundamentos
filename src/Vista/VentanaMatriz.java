@@ -20,7 +20,7 @@ public class VentanaMatriz extends JFrame{
     matriz.updateUI();
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setVisible(false);
+    setVisible(false); 
 
   }
 

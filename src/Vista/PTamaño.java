@@ -25,7 +25,7 @@ public class PTamaño extends JPanel {
 		Filas = new JLabel("FILAS:");
 		Columnas = new JLabel("COLUMNAS:");
 		setLayout(new FlowLayout());
-
+ 
 		add(Filas);
 		add(campo_numero1);
 		add(Columnas);
