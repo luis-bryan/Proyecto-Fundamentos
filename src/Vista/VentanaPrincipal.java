@@ -48,7 +48,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 	private void actionListener(VentanaPrincipal escuchador) {
 		pBoton.getBoton_empezar().addActionListener(escuchador);
-		
 	}
 	public void actionPerformed(ActionEvent e) {
 		int filas=0;
@@ -58,7 +57,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		int tormentosas = 0;
 		int letales = 0;
 		int muros = 0;
-
+try {
 		String auxf = pTamaño.getCampo_numero1().getText();
 		filas=Integer.parseInt(auxf);
 		String auxc = pTamaño.getCampo_numero2().getText();
@@ -71,14 +70,15 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		letales = Integer.parseInt(auxl);
 		String auxm = pMuros.getCampo_numero1().getText();
 		muros = Integer.parseInt(auxm);
+}catch(java.lang.NumberFormatException ex) {
+	JOptionPane.showMessageDialog(null, ".:DIGITE NUEVAMENTE LOS DATOS:.","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+}finally {
 
 		Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
 		
 		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
 			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos);
 			setVisible(false);
-			ventanaMatriz.pack();
-			ventanaMatriz.setVisible(true);
 			ventanaMatriz.pack();
 			ventanaMatriz.setSize(500,500);
 			ventanaMatriz.setVisible(true);
@@ -87,5 +87,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		}else if(columnas<=20 || columnas>=5) {
 			JOptionPane.showMessageDialog(null, "El numero "+columnas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);	
 		}
+		
+	}
 	}
 }
