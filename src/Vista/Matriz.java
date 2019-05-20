@@ -2,11 +2,24 @@ package Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Matriz extends JPanel {
+public class Matriz extends JPanel implements KeyListener{
+	int x;
+	int y;
+	int contM;
+	int contN;
+	int contS;
+	int contT;
+	JButton MatrizBotones[][];
+	
+	
 	public Matriz(int x, int y) {
+		this.x = x;
+		this.y = y;
 		System.out.println(x+" "+y);
-		JButton MatrizBotones[][] = new JButton[x][y];
+		MatrizBotones= new JButton[x][y];
 		setLayout(new GridLayout(x, y));
 		int contM = (int) (Math.random() * (x - 1));
 		int contN = (int) (Math.random() * (y - 1));
@@ -33,7 +46,6 @@ public class Matriz extends JPanel {
 					btn3.setIcon(icono2);
 					MatrizBotones[contS][contT] = btn3;
 					add(btn3);
-					contY++;
 				}else {
 					JButton btn = new JButton();
 	
@@ -49,5 +61,34 @@ public class Matriz extends JPanel {
 			}
 		}
 	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Typed");
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Released");
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int m= e.getKeyCode();
+		System.out.println("If");
+		if (m == KeyEvent.VK_UP) {
 
+			MatrizBotones[contM][contN-1]= new JButton();
+		    for (int contX = 0; contX < x; contX++) {
+		        System.out.println("For 1");
+		    	for (int contY = 0; contY < y; contY++) {
+		        	System.out.println("For 2");
+		    		add(MatrizBotones[contX][contY]);
+		        }
+		    }
+		        }
+			updateUI();
+
+		}
 }
