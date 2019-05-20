@@ -15,6 +15,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	PObjetivos pObjetivos;
 	PBoton pBoton;
 	ActionListener oyente;
+	PBoton pBoton2;
 
 	public VentanaPrincipal() {
 		setTitle("MENU BOSQUECILLO");
@@ -47,6 +48,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 	private void actionListener(VentanaPrincipal escuchador) {
 		pBoton.getBoton_empezar().addActionListener(escuchador);
+		
 	}
 	public void actionPerformed(ActionEvent e) {
 		int filas=0;
@@ -85,10 +87,5 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		}else if(columnas<=20 || columnas>=5) {
 			JOptionPane.showMessageDialog(null, "El numero "+columnas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);	
 		}
-		
-
-		setVisible(true);
-
 	}
-
 }

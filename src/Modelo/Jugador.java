@@ -7,6 +7,4 @@ public class Jugador {
 		return jugador;
 	}
 	
-	
-
 }
