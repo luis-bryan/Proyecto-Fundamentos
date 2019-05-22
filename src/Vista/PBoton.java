@@ -13,9 +13,9 @@ public class PBoton extends JPanel {
 		setBackground(Color.white);
 		setForeground(Color.red);
 		boton_empezar=new JButton("EMPEZAR");
-		boton_empezar.setForeground(Color.blue);	
+		boton_empezar.setForeground(Color.green);	
 		boton_empezar.setFont(new Font("cooper black",Font.BOLD,30));
-		boton_empezar.setBackground(Color.green);
+		boton_empezar.setBackground(Color.black);
 		
 		
 		add(boton_empezar);

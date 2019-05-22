@@ -18,7 +18,6 @@ public class Matriz extends JPanel implements KeyListener{
 	public Matriz(int x, int y) {
 		this.x = x;
 		this.y = y;
-		System.out.println(x+" "+y);
 		MatrizBotones= new JButton[x][y];
 		setLayout(new GridLayout(x, y));
 		int contM = (int) (Math.random() * (x - 1));
@@ -50,10 +49,6 @@ public class Matriz extends JPanel implements KeyListener{
 					JButton btn = new JButton();
 	
 					ImageIcon cesped = new ImageIcon(getClass().getResource("/Imagenes/futbol.jpg"));
-					// Icon icono = new
-					// ImageIcon(cesped.getImage().getScaledInstance(btn.getWidth(),btn.getHeight(),Image.SCALE_DEFAULT));
-					// La linea anterior estaba en el codigo de la calculadora, pero al
-					// implementarlo no funciona
 					btn.setIcon(cesped);
 					MatrizBotones[contX][contY] = btn;
 					add(btn);
