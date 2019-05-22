@@ -86,11 +86,16 @@ try {
 		Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
 
 		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
-			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos);
+			int auxiliar =(filas*columnas)/4;
+			if(tormentosas<(filas*columnas)/4) {		
+			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas);
 			setVisible(false);
 			ventanaMatriz.pack();
 			ventanaMatriz.setSize(500,500);
 			ventanaMatriz.setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: "+ auxiliar,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+			}
 		}else if(filas<=20 || filas >=5){
 			JOptionPane.showMessageDialog(null, "El numero "+filas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 		}else if(columnas<=20 || columnas>=5) {
