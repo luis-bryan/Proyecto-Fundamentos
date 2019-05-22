@@ -75,7 +75,7 @@ try {
 }finally {
 
 		Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
-		
+
 		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
 			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos);
 			setVisible(false);
@@ -85,9 +85,9 @@ try {
 		}else if(filas<=20 || filas >=5){
 			JOptionPane.showMessageDialog(null, "El numero "+filas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 		}else if(columnas<=20 || columnas>=5) {
-			JOptionPane.showMessageDialog(null, "El numero "+columnas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);	
+			JOptionPane.showMessageDialog(null, "El numero "+columnas +" no es permitido en el campo de juego","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 		}
-		
+
 	}
 	}
 }
