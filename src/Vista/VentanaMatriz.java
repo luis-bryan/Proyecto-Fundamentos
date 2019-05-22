@@ -14,7 +14,6 @@ public class VentanaMatriz extends JFrame{
     matriz = new Matriz(x,y);
     setResizable(false);
     setLayout(null);
-    setSize(Toolkit.getDefaultToolkit().getScreenSize());
     add(datos).setBounds(0,0,150,Toolkit.getDefaultToolkit().getScreenSize().height);
     add(matriz);
     matriz.setBounds(150,0,Toolkit.getDefaultToolkit().getScreenSize().width-150,Toolkit.getDefaultToolkit().getScreenSize().height-63);

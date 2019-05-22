@@ -2,9 +2,13 @@ package Vista;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -16,13 +20,19 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	PBoton pBoton;
 	ActionListener oyente;
 	PBoton pBoton2;
+	
 
+	
 	public VentanaPrincipal() {
 		setTitle("MENU BOSQUECILLO");
 		setSize(500, 500);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(5, 1));
+		
+
+		
+		
 		// PANEL TAMAÑO
 		pTamaño = new PTamaño();
 		// PANEL MUROS
@@ -42,7 +52,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 		actionListener(this);
 		setLocationRelativeTo(null);
-
 		setVisible(true);
 	}
 

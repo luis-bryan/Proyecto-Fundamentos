@@ -7,7 +7,7 @@ public class Datos extends JPanel {
   JLabel aux;
 
   public Datos(int filas, int columnas, int objetivos, int tormentosas, int letales, int muros) {
-    setBackground(Color.cyan);
+    setBackground(Color.white);
     setLayout(null);
 
     aux = new JLabel("<html> Filas: <br>" + filas + "</html>");
