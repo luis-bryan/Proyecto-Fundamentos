@@ -87,12 +87,17 @@ try {
 
 		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
 			int auxiliar =(filas*columnas)/4;
-			if(tormentosas<(filas*columnas)/4) {		
-			VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas);
-			setVisible(false);
-			ventanaMatriz.pack();
-			ventanaMatriz.setSize(500,500);
-			ventanaMatriz.setVisible(true);
+			int auxiliar2 = (filas*columnas)/8;
+			if(tormentosas<=(filas*columnas)/4) {
+				if(letales<=(filas*columnas)/8) {
+					VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales);
+					setVisible(false);
+					ventanaMatriz.pack();
+					ventanaMatriz.setSize(500,500);
+					ventanaMatriz.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "El numero de letales permitido es: "+ auxiliar2,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+				}
 			}else {
 				JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: "+ auxiliar,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 			}
