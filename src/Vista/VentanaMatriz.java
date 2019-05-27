@@ -9,12 +9,8 @@ public class VentanaMatriz extends JFrame{
 	int t =0;
 	int l = 0;
 	Matriz matriz;
-<<<<<<< HEAD
-	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor, int let){
-=======
-	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor) {
+	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor, int let) {
 		Ayudas ay = new Ayudas();
->>>>>>> 38c6b98340c75caf1c4e18bbbe2664fe30879c06
 		x = tamX;
 		y = tamY;
 		t = tor;
