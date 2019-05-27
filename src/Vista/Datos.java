@@ -5,11 +5,15 @@ import java.awt.*;
 
 public class Datos extends JPanel {
   JLabel aux;
+  ImageIcon bos; 
 
   public Datos(int filas, int columnas, int objetivos, int tormentosas, int letales, int muros) {
     setBackground(Color.white);
     setLayout(null);
-
+    bos=new ImageIcon(getClass().getResource("/imagenes/bosquesillo.png"));
+    JLabel q = new JLabel(bos);
+    q.setBounds(0,0, 150, 80);
+    add(q);
     aux = new JLabel("<html> Filas: <br>" + filas + "</html>");
     add(aux).setBounds(10,100,150,30);
     aux = new JLabel("<html>Columnas:<br> " + columnas+"</html>");
