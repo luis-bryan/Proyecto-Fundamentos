@@ -3,22 +3,23 @@ package Vista;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class PBoton extends JPanel {
 	JButton boton_empezar;
-
+	Icon empezar;
 	public PBoton() {
 		setBackground(Color.white);
-		setForeground(Color.red);
-		boton_empezar=new JButton("EMPEZAR");
-		boton_empezar.setForeground(Color.green);	
-		boton_empezar.setFont(new Font("cooper black",Font.BOLD,30));
-		boton_empezar.setBackground(Color.black);
+		empezar= new ImageIcon(getClass().getResource("/imagenes/EMPEZAR.png"));
+		boton_empezar =new JButton();
+		boton_empezar.setIcon(empezar);
 		
 		
-		add(boton_empezar);
+		
+		add(boton_empezar).setBounds(0, 0, 0, 0);;
 	}
 
 	public JButton getBoton_empezar() {

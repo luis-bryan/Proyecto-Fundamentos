@@ -10,9 +10,9 @@ public class Datos extends JPanel {
   public Datos(int filas, int columnas, int objetivos, int tormentosas, int letales, int muros) {
     setBackground(Color.white);
     setLayout(null);
-    bos=new ImageIcon(getClass().getResource("/imagenes/bosquesillo.png"));
+    bos=new ImageIcon(getClass().getResource("/imagenes/cristiano.png"));
     JLabel q = new JLabel(bos);
-    q.setBounds(0,0, 150, 80);
+    q.setBounds(0,0,getWidth(),getHeight());
     add(q);
     aux = new JLabel("<html> Filas: <br>" + filas + "</html>");
     add(aux).setBounds(10,100,150,30);
