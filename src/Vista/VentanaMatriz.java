@@ -8,7 +8,8 @@ public class VentanaMatriz extends JFrame{
 	int y = 0;
 	int t =0;
 	Matriz matriz;
-	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor){
+	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor) {
+		Ayudas ay = new Ayudas();
 		x = tamX;
 		y = tamY;
 		t = tor;
@@ -18,8 +19,9 @@ public class VentanaMatriz extends JFrame{
 	    setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH);
 		add(datos).setBounds(0,0,150,Toolkit.getDefaultToolkit().getScreenSize().height);
 		add(matriz);
-		matriz.setBounds(150,0,Toolkit.getDefaultToolkit().getScreenSize().width-150,Toolkit.getDefaultToolkit().getScreenSize().height-63);
+		matriz.setBounds(150,0,Toolkit.getDefaultToolkit().getScreenSize().width-320,Toolkit.getDefaultToolkit().getScreenSize().height-63);
 		matriz.updateUI();
+		add(ay).setBounds(Toolkit.getDefaultToolkit().getScreenSize().width-180,0,400,600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(false); 
