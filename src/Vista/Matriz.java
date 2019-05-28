@@ -112,16 +112,16 @@ public class Matriz extends JPanel implements KeyListener {
         	
         } else if(contX==contC &&contY==contD && (arreglochar[contC][contD]=='C'|| arreglochar[contC][contD]==0)){
 
-        	for (int c = 0; c < l; c++) {
+        	for (int c = 0; c < o; c++) {
         		if(arreglochar[contC][contD]=='C'|| arreglochar[contC][contD]==0) {
         			btn6 = new JButton();
 
-            		ImageIcon objetivo = new ImageIcon(getClass().getResource("/imagenes/letal.png"));
+            		ImageIcon objetivo = new ImageIcon(getClass().getResource("/imagenes/copa.jpg"));
             		Icon copa = new ImageIcon(objetivo.getImage().getScaledInstance(btn6.getMaximumSize().width *(x+x)	,
             				btn6.getMaximumSize().height * (y+y), Image.SCALE_DEFAULT));
             		btn6.setIcon(copa);
             		MatrizBotones[contC][contD] = btn6;
-            		arreglochar[contC][contD] = 'L';
+            		arreglochar[contC][contD] = 'O';
             		btn6.addKeyListener(this);   
         		do {
         			contC = (int) (Math.random() * x );
@@ -137,16 +137,16 @@ public class Matriz extends JPanel implements KeyListener {
         	contD = -1;
         	
         }else if(contX==contP && contY==contQ && (arreglochar[contP][contQ]=='C'|| arreglochar[contP][contQ]==0)) {
-        	for (int a = 0; a < o; a++) {
+        	for (int a = 0; a < l; a++) {
         		if(arreglochar[contP][contQ]=='C'|| arreglochar[contP][contQ]==0) {
         			btn5 = new JButton();
 
-            		ImageIcon enemigo2 = new ImageIcon(getClass().getResource("/imagenes/copa.jpg"));
+            		ImageIcon enemigo2 = new ImageIcon(getClass().getResource("/imagenes/letal.png"));
             		Icon icono5 = new ImageIcon(enemigo2.getImage().getScaledInstance(btn5.getMaximumSize().width *(x+x)	,
             				btn5.getMaximumSize().height * (y+y), Image.SCALE_DEFAULT));
             		btn5.setIcon(icono5);
             		MatrizBotones[contP][contQ] = btn5;
-            		arreglochar[contP][contQ] = 'O';
+            		arreglochar[contP][contQ] = 'L';
             		btn5.addKeyListener(this);
         		
         		do {
@@ -202,39 +202,75 @@ public class Matriz extends JPanel implements KeyListener {
 		if (m == KeyEvent.VK_UP) {
 			JButton aux = MatrizBotones[contM][contN];
 			if(arreglochar[contM][contN-1]=='C') {
-			MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
-			MatrizBotones[contM][contN - 1] = aux;
-			arreglochar[contM][contN]='C';
-			arreglochar[contM][contN-1]='J';
-			contN--;
+				MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
+				MatrizBotones[contM][contN - 1] = aux;
+				arreglochar[contM][contN]='C';
+				arreglochar[contM][contN-1]='J';
+				contN--;
 			}else if(arreglochar[contM][contN-1]=='B') {
-				if(arreglochar[contM][contN-2]=='C') {
-					JButton auxCesp = MatrizBotones[contM][contN-2];
+				if (arreglochar[contM][0] =='B') {
+					MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
+					MatrizBotones[contM][contN - 1] = aux;
+					arreglochar[contM][contN]='B';
+					arreglochar[contM][contN-1]='J';
+					contN--;
+				}else if(arreglochar[contM][contN-2]=='O') {
 					JButton auxBalon = MatrizBotones[contM][contN-1];
-					
 					MatrizBotones[contM][contN-2]=auxBalon;
 					MatrizBotones[contM][contN-1]=aux;
-					MatrizBotones[contM][contN]=auxCesp;
-					
+					MatrizBotones[contM][contN]= btn;
 					arreglochar[contM][contN-2]='B';
 					arreglochar[contM][contN-1]='J';
 					arreglochar[contM][contN]='C';
+					contN--;
+				}else if(arreglochar[contM][contN-2]=='C') {
+					JButton auxCesp = MatrizBotones[contM][contN-2];
+					JButton auxBalon = MatrizBotones[contM][contN-1];
+					MatrizBotones[contM][contN-2]=auxBalon;
+					MatrizBotones[contM][contN-1]=aux;
+					MatrizBotones[contM][contN]=auxCesp;
+					arreglochar[contM][contN-2]='B';
+					arreglochar[contM][contN-1]='J';
+					arreglochar[contM][contN]='C';
+					contN--;
 				}
-				
 			}
-		
+/*TODO:-Movimientos de las bestias
+ * Quitar vida si toca a cristiano
+ * Pierde juego si toca a Ramos
+ * Agregar los muros
+	   */
+
+
 
 		} else if (m == KeyEvent.VK_DOWN) {
 			JButton aux = MatrizBotones[contM][contN];
 			if(arreglochar[contM][contN+1]=='C') {
-			MatrizBotones[contM][contN] = MatrizBotones[contM][contN+1];
-			MatrizBotones[contM][contN+1] = aux;
-			arreglochar[contM][contN]='C';
-			arreglochar[contM][contN+1]='J';
-
-			contN++;
+				MatrizBotones[contM][contN] = MatrizBotones[contM][contN+1];
+				MatrizBotones[contM][contN+1] = aux;
+				arreglochar[contM][contN]='C';
+				arreglochar[contM][contN+1]='J';
+				contN++;
+			}else if(arreglochar[contM][contN+1]=='B') {
+				if (arreglochar[contM][arreglochar.length-1] =='B') {
+					MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
+					MatrizBotones[contM][contN + 1] = aux;
+					arreglochar[contM][contN]='B';
+					arreglochar[contM][contN+1]='J';
+					contN++;
+				}else if(arreglochar[contM][contN+2]=='C') {
+					JButton auxCesp = MatrizBotones[contM][contN+2];
+					JButton auxBalon = MatrizBotones[contM][contN+1];
+					MatrizBotones[contM][contN+2]=auxBalon;
+					MatrizBotones[contM][contN+1]=aux;
+					MatrizBotones[contM][contN]=auxCesp;
+					arreglochar[contM][contN+2]='B';
+					arreglochar[contM][contN+1]='J';
+					arreglochar[contM][contN]='C';
+					contN++;
+				}
+				
 			}
-			
 
 		} else if (m == KeyEvent.VK_RIGHT) {
 			JButton aux = MatrizBotones[contM][contN];
@@ -245,8 +281,26 @@ public class Matriz extends JPanel implements KeyListener {
 			arreglochar[contM+1][contN]='J';
 
 			contM++;
+			}else if(arreglochar[contM+1][contN]=='B') {
+				if (arreglochar[arreglochar.length-1][contN] =='B') {
+					MatrizBotones[contM][contN] = MatrizBotones[contM+1][contN];
+					MatrizBotones[contM+1][contN] = aux;
+					arreglochar[contM][contN]='B';
+					arreglochar[contM+1][contN]='J';
+					contM++;
+				}else if(arreglochar[contM+2][contN]=='C') {
+					JButton auxCesp = MatrizBotones[contM+2][contN];
+					JButton auxBalon = MatrizBotones[contM+1][contN];
+					MatrizBotones[contM+2][contN]=auxBalon;
+					MatrizBotones[contM+1][contN]=aux;
+					MatrizBotones[contM][contN]=auxCesp;
+					arreglochar[contM+2][contN]='B';
+					arreglochar[contM+1][contN]='J';
+					arreglochar[contM][contN]='C';
+					contM++;
+				}
+				
 			}
-			
 
 		} else if (m == KeyEvent.VK_LEFT) {
 			JButton aux = MatrizBotones[contM][contN];
@@ -256,7 +310,26 @@ public class Matriz extends JPanel implements KeyListener {
 			arreglochar[contM][contN]='C';
 			arreglochar[contM-1][contN]='J';
 			contM--;
-			}
+			}else if(arreglochar[contM-1][contN]=='B') {
+				if (arreglochar[0][contN] =='B') {
+					MatrizBotones[contM][contN] = MatrizBotones[contM-1][contN];
+					MatrizBotones[contM-1][contN] = aux;
+					arreglochar[contM][contN]='B';
+					arreglochar[contM-1][contN]='J';
+					contM--;
+				}else if(arreglochar[contM-2][contN]=='C') {
+					JButton auxCesp = MatrizBotones[contM-2][contN];
+					JButton auxBalon = MatrizBotones[contM-1][contN];
+					MatrizBotones[contM-2][contN]=auxBalon;
+					MatrizBotones[contM-1][contN]=aux;
+					MatrizBotones[contM][contN]=auxCesp;
+					arreglochar[contM-2][contN]='B';
+					arreglochar[contM-1][contN]='J';
+					arreglochar[contM][contN]='C';
+					contM--;
+				}
+				
+		}
 
 		}
 		for (int qy =0; qy<x; qy++){
@@ -266,4 +339,6 @@ public class Matriz extends JPanel implements KeyListener {
 
 		updateUI();
 	}
-}
+	}
+
+
