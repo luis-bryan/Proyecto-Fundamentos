@@ -8,12 +8,13 @@ public class VentanaMatriz extends JFrame{
 	int y = 0;
 	int t =0;
 	Matriz matriz;
+	Ayudas ay;
 	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor) {
-		Ayudas ay = new Ayudas();
+		ay = new Ayudas();
 		x = tamX;
 		y = tamY;
 		t = tor;
-		matriz = new Matriz(x,y,t);
+		matriz = new Matriz(x,y,t, this);
 		
 		setResizable(true);
 		setLayout(null);
@@ -26,5 +27,9 @@ public class VentanaMatriz extends JFrame{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(false); 
+	}
+
+	public Ayudas getAy() {
+		return ay;
 	}
 }

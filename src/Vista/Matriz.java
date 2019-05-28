@@ -20,20 +20,24 @@ public class Matriz extends JPanel implements KeyListener {
   int contA;
   int contB;
   int tormentosas;
+  int pasos;
   JButton btn;
   JButton btn2;
   JButton btn3;
   JButton btn4;
   JButton MatrizBotones[][];
   int t;
+  VentanaMatriz v;
   String[][] m;
 
-  public Matriz(int x, int y, int t) {
+  public Matriz(int x, int y, int t, VentanaMatriz v) {
     this.x = x;
     this.y = y;
     this.t = t;
-    m = new String[x][y];
+    this.v = v;
 
+    m = new String[x][y];
+    pasos = x*y;
     MatrizBotones = new JButton[x][y];
     setLayout(new GridLayout(x, y));
     contM = (int) (Math.random() * (x - 1));
@@ -118,6 +122,7 @@ public class Matriz extends JPanel implements KeyListener {
       for (int qx=0; qx<y; qx++)
       add(MatrizBotones[qx][qy]);
     }
+    v.getAy().contador.setText("PASOS RESTANTES: " + pasos);
   }
 
   @Override
@@ -136,48 +141,50 @@ public class Matriz extends JPanel implements KeyListener {
   public void keyPressed(KeyEvent e) {
     int m = e.getKeyCode();
     System.out.println("If");
-    if (m == KeyEvent.VK_UP) {
+    if (pasos>0) {
+      if (m == KeyEvent.VK_UP) {
 
-      JButton aux = MatrizBotones[contM][contN];
-      MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
-      MatrizBotones[contM][contN - 1] = aux;
-      contN--;
-//      System.out.println("" + contM + ","+ contN);
-      System.out.println("" + contM + "," + contN);
+        JButton aux = MatrizBotones[contM][contN];
+        MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
+        MatrizBotones[contM][contN - 1] = aux;
+        contN--;
+        pasos--;
 
-    } else if (m == KeyEvent.VK_DOWN) {
-      JButton aux = MatrizBotones[contM][contN];
-      MatrizBotones[contM][contN] = MatrizBotones[contM][contN+1];
-      MatrizBotones[contM][contN+1] = aux;
+      } else if (m == KeyEvent.VK_DOWN) {
+        JButton aux = MatrizBotones[contM][contN];
+        MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
+        MatrizBotones[contM][contN + 1] = aux;
 
-      contN++;
-//      System.out.println("" + contM + ","+ contN);
-      System.out.println("" + contM + "," + contN);
+        contN++;
+        pasos--;
 
-    } else if (m == KeyEvent.VK_RIGHT) {
-      JButton aux = MatrizBotones[contM][contN];
-      MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
-      MatrizBotones[contM + 1][contN] = aux;
+      } else if (m == KeyEvent.VK_RIGHT) {
+        JButton aux = MatrizBotones[contM][contN];
+        MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
+        MatrizBotones[contM + 1][contN] = aux;
 
-      contM++;
-      System.out.println("" + contM + "," + contN);
-//      System.out.println("" + contM + ","+ contN);
+        contM++;
+        pasos--;
 
-    } else if (m == KeyEvent.VK_LEFT) {
-      JButton aux = MatrizBotones[contM][contN];
-      MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
-      MatrizBotones[contM - 1][contN] = aux;
+      } else if (m == KeyEvent.VK_LEFT) {
+        JButton aux = MatrizBotones[contM][contN];
+        MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
+        MatrizBotones[contM - 1][contN] = aux;
 
-      contM--;
-      System.out.println("" + contM + "," + contN);
-//      System.out.println("" + contM + ","+ contN);
+        contM--;
+        pasos--;
 
+      }
+
+      for (int qy = 0; qy < x; qy++) {
+        for (int qx = 0; qx < y; qx++)
+          add(MatrizBotones[qx][qy]);
+      }
+
+      updateUI();
+      v.getAy().contador.setText("PASOS RESTANTES: " + pasos);
+    } else if(pasos==0){
+      JOptionPane.showMessageDialog(v, "Pasos Agotados");
     }
-    for (int qy =0; qy<x; qy++){
-      for (int qx=0; qx<y; qx++)
-        add(MatrizBotones[qx][qy]);
-    }
-
-    updateUI();
   }
 }
