@@ -23,14 +23,14 @@ public class PObstaculos extends JPanel {
 
 		setBackground(Color.white);
 		setBorder(new CompoundBorder(new EmptyBorder(0, 0, 5, 0), new TitledBorder("OBSTACULOS")));
-
+		setLayout(new GridLayout(3, 1));
 		campo_numero1 = new JTextField(10);
 		campo_numero2 = new JTextField(10);
-		campo_numero3= new JTextField(10);
+		campo_numero3 = new JTextField(10);
 		BestiasL = new JLabel("BESTIAS TORMENTOSAS:");
 		BestiasT = new JLabel("BESTIAS LETALES:");
-		Muros=new JLabel("MUROS");
-		setLayout(new FlowLayout());
+		Muros = new JLabel("MUROS");
+		
 
 		add(BestiasL);
 		add(campo_numero1);

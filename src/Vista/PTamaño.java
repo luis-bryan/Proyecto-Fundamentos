@@ -18,7 +18,6 @@ public class PTamaño extends JPanel {
 	JLabel Columnas;
 
 	public PTamaño() {
-		setBackground(Color.WHITE);
 		setBorder(new CompoundBorder(new EmptyBorder(0, 0, 5, 0), new TitledBorder("TAMAÑO")));
 		campo_numero1 = new JTextField(10);
 		campo_numero2 = new JTextField(10);

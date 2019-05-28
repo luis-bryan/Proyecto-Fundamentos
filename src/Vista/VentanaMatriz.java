@@ -14,9 +14,10 @@ public class VentanaMatriz extends JFrame{
 		y = tamY;
 		t = tor;
 		matriz = new Matriz(x,y,t);
+		
 		setResizable(true);
 		setLayout(null);
-	    setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH);
+	   
 		add(datos).setBounds(0,0,150,Toolkit.getDefaultToolkit().getScreenSize().height);
 		add(matriz);
 		matriz.setBounds(150,0,Toolkit.getDefaultToolkit().getScreenSize().width-320,Toolkit.getDefaultToolkit().getScreenSize().height-63);

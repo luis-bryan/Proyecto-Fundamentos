@@ -21,17 +21,17 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	ActionListener oyente;
 	PBoton pBoton2;
 	ImageIcon bos; 
-
+	
 	public VentanaPrincipal() {
 		setTitle("MENU BOSQUECILLO");
 		setSize(800, 200);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(5, 1));
+		
 
 		 bos=new ImageIcon(getClass().getResource("/imagenes/PRINCIPAL.png"));
 		    JLabel q = new JLabel(bos);
-		    q.setBounds(0,0, 150, 100);
 		    add(q);
 
 		pTamaño = new PTamaño();
@@ -48,7 +48,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		add(pBoton);
 
 		actionListener(this);
-		setLocation(450, 0);
+		setLocation(450,0);
 		setVisible(true);
 	}
 
@@ -93,6 +93,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 					ventanaMatriz.pack();
 					ventanaMatriz.setSize(500, 500);
 					ventanaMatriz.setVisible(true);
+					ventanaMatriz.setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH);
 				} else {
 					JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: " + auxiliar,
 							"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
