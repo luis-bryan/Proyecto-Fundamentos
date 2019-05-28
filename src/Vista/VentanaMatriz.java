@@ -1,30 +1,52 @@
 package Vista;
 
-import javax.swing.*;
-import java.awt.*;
 
-public class VentanaMatriz extends JFrame{
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+public class VentanaMatriz extends JFrame implements ActionListener {
 	int x = 0;
 	int y = 0;
-	int t =0;
+	int t = 0;
 	Matriz matriz;
-	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor) {
+	Ayudas ayudas;
+
+	public VentanaMatriz(int tamX, int tamY, Datos datos, int tor) {
 		Ayudas ay = new Ayudas();
 		x = tamX;
 		y = tamY;
 		t = tor;
-		matriz = new Matriz(x,y,t);
-		
+		matriz = new Matriz(x, y, t);
+		actionListener(this);
+
 		setResizable(true);
 		setLayout(null);
-	   
-		add(datos).setBounds(0,0,150,Toolkit.getDefaultToolkit().getScreenSize().height);
+
+		add(datos).setBounds(0, 0, 150, Toolkit.getDefaultToolkit().getScreenSize().height);
 		add(matriz);
-		matriz.setBounds(150,0,Toolkit.getDefaultToolkit().getScreenSize().width-320,Toolkit.getDefaultToolkit().getScreenSize().height-63);
+		matriz.setBounds(150, 0, Toolkit.getDefaultToolkit().getScreenSize().width - 320,
+				Toolkit.getDefaultToolkit().getScreenSize().height - 63);
 		matriz.updateUI();
-		add(ay).setBounds(Toolkit.getDefaultToolkit().getScreenSize().width-180,0,400,600);
+		add(ay).setBounds(Toolkit.getDefaultToolkit().getScreenSize().width - 180, 0, 400, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(false); 
+		setVisible(false);
+
+
 	}
+
+	private void actionListener(ActionListener escuchador) {
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

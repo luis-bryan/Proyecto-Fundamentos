@@ -70,7 +70,7 @@ public class Matriz extends JPanel implements KeyListener {
 
           ImageIcon balon = new ImageIcon(getClass().getResource("/imagenes/balon.png"));
           Icon icono2 = new ImageIcon(balon.getImage().getScaledInstance(btn3.getMaximumSize().width * x,
-            btn3.getMaximumSize().height * y, Image.SCALE_DEFAULT));
+            btn3.getMaximumSize().height * y, Image.SCALE_SMOOTH));
           btn3.setIcon(icono2);
           MatrizBotones[contX][contY] = btn3;
           btn3.addKeyListener(this);

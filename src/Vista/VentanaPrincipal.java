@@ -20,22 +20,22 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	PBoton pBoton;
 	ActionListener oyente;
 	PBoton pBoton2;
-	ImageIcon bos; 
-	
+	ImageIcon bos;
+	Sonidos musica;
+
 	public VentanaPrincipal() {
 		setTitle("MENU BOSQUECILLO");
 		setSize(800, 200);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(5, 1));
-		
 
-		 bos=new ImageIcon(getClass().getResource("/imagenes/PRINCIPAL.png"));
-		    JLabel q = new JLabel(bos);
-		    add(q);
+		bos = new ImageIcon(getClass().getResource("/imagenes/PRINCIPAL.png"));
+		JLabel q = new JLabel(bos);
+		add(q);
 
 		pTamaño = new PTamaño();
-		
+
 		pBestias = new PObstaculos();
 
 		pObjetivos = new PObjetivos();
@@ -48,7 +48,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		add(pBoton);
 
 		actionListener(this);
-		setLocation(450,0);
+		setLocation(450, 0);
 		setVisible(true);
 	}
 
@@ -59,7 +59,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int filas = 0;
 		int columnas = 0;
-
 		int objetivos = 0;
 		int tormentosas = 0;
 		int letales = 0;
@@ -77,7 +76,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 			letales = Integer.parseInt(auxl);
 			String aux3 = pBestias.getCampo_numero3().getText();
 			muros = Integer.parseInt(auxl);
-			
+
 		} catch (java.lang.NumberFormatException ex) {
 			JOptionPane.showMessageDialog(null, ".:DIGITE NUEVAMENTE LOS DATOS:.", "ADVERTENCIA",
 					JOptionPane.WARNING_MESSAGE);
@@ -93,7 +92,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 					ventanaMatriz.pack();
 					ventanaMatriz.setSize(500, 500);
 					ventanaMatriz.setVisible(true);
-					ventanaMatriz.setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH);
+					ventanaMatriz.setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+					
 				} else {
 					JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: " + auxiliar,
 							"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
