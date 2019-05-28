@@ -20,7 +20,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	PBoton pBoton;
 	ActionListener oyente;
 	PBoton pBoton2;
-	ImageIcon bos; 
+	ImageIcon bos;
+	Sonidos musica;
 
 	public VentanaPrincipal() {
 		setTitle("MENU BOSQUECILLO");
@@ -29,13 +30,12 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(5, 1));
 
-		 bos=new ImageIcon(getClass().getResource("/imagenes/PRINCIPAL.png"));
-		    JLabel q = new JLabel(bos);
-		    q.setBounds(0,0, 150, 100);
-		    add(q);
+		bos = new ImageIcon(getClass().getResource("/imagenes/PRINCIPAL.png"));
+		JLabel q = new JLabel(bos);
+		add(q);
 
 		pTamaño = new PTamaño();
-		
+
 		pBestias = new PObstaculos();
 
 		pObjetivos = new PObjetivos();
@@ -59,7 +59,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int filas = 0;
 		int columnas = 0;
-
 		int objetivos = 0;
 		int tormentosas = 0;
 		int letales = 0;
@@ -90,15 +89,18 @@ try {
 				if(letales<=(filas*columnas)/16) {
 					if(objetivos>=2 && objetivos<=5) {
 					VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos);
+
 					setVisible(false);
 					ventanaMatriz.pack();
 					ventanaMatriz.setSize(500,500);
 					ventanaMatriz.setVisible(true);
+
 					}else {
 						JOptionPane.showMessageDialog(null, "Numero de Objetivos invalido","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 					}
 				}else {
 					JOptionPane.showMessageDialog(null, "El numero de letales permitido es: "+ auxiliar2,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+
 				}
 			}else {
 				JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: "+ auxiliar,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);

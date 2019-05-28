@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.util.Arrays;
 
 public class Matriz extends JPanel implements KeyListener {
+
 	int x;
 	int y;
 	int contM;
@@ -169,8 +170,6 @@ public class Matriz extends JPanel implements KeyListener {
           MatrizBotones[contX][contY] = btn;
           arreglochar[contX][contY] = 'C';
           btn.addKeyListener(this);
-
-
 
         }
 		  }
