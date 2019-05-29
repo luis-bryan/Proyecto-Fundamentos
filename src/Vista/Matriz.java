@@ -47,7 +47,7 @@ public class Matriz extends JPanel implements KeyListener {
     this.v = v;
     this.vp = vp;
     pasos = x * y;
-    this.contM = m;
+    this.m = m;
 
     arreglochar = new char[x][y];
     MatrizBotones = new JButton[x][y];
