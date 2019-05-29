@@ -13,10 +13,11 @@ public class VentanaMatriz extends JFrame {
 	int t =0;
 	int l = 0;
 	int o = 0;
+	int m = 0;
 	Matriz matriz;
 	Ayudas ay;
 	VentanaPrincipal vp;
-	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor, int let, int obj, VentanaPrincipal vp) {
+	public VentanaMatriz(int tamX, int tamY, Datos datos,int tor, int let, int obj, VentanaPrincipal vp, int mur) {
 		ay = new Ayudas();
 		this.vp = vp;
 		x = tamX;
@@ -24,7 +25,8 @@ public class VentanaMatriz extends JFrame {
 		t = tor;
 		l = let;
 		o = obj;
-		matriz = new Matriz(x,y,t,l,o, this, vp);
+		m = mur;
+		matriz = new Matriz(x,y,t,l,o, this, vp, m);
 		setResizable(true);
 		setLayout(null);
 

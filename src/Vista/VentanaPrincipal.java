@@ -86,16 +86,21 @@ try {
 		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
 			int auxiliar =(filas*columnas)/8;
 			int auxiliar2 = (filas*columnas)/16;
+			int auxiliar3 = (filas*columnas)/5;
 			if(tormentosas<=(filas*columnas)/8) {
 				if(letales<=(filas*columnas)/16) {
 					if(objetivos>=2 && objetivos<=5) {
-					VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos, this);
+						if(muros<=(filas*columnas)/5) {
+					VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos, this, muros);
 
 					setVisible(false);
 					ventanaMatriz.pack();
 					ventanaMatriz.setSize(500,500);
 					ventanaMatriz.setVisible(true);
-
+						}else {
+							JOptionPane.showMessageDialog(null, "El numero de muros permitido es: "+ auxiliar3,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+						}
+	
 					}else {
 						JOptionPane.showMessageDialog(null, "Numero de Objetivos invalido","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 					}
