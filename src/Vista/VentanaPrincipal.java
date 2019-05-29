@@ -83,7 +83,7 @@ try {
 
 	Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
 	System.out.println("XY");
-	if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
+	if(filas <=20 && filas>=5 || columnas<=20 && columnas>=5) {
 		int auxiliar =(filas*columnas)/8;
 		int auxiliar2 = (filas*columnas)/16;
 		int auxiliar3 = (filas*columnas)/5;
