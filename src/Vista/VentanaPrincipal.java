@@ -76,19 +76,20 @@ try {
 		letales = Integer.parseInt(auxl);
 		String auxm = pBestias.getCampo_numero3().getText();
 		muros = Integer.parseInt(auxm);
+	System.out.println("X");
 }catch(java.lang.NumberFormatException ex) {
 	JOptionPane.showMessageDialog(null, ".:DIGITE NUEVAMENTE LOS DATOS:.","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 }finally {
 
 		Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
-
+	System.out.println("XY");
 		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
 			int auxiliar =(filas*columnas)/8;
 			int auxiliar2 = (filas*columnas)/16;
 			if(tormentosas<=(filas*columnas)/8) {
 				if(letales<=(filas*columnas)/16) {
 					if(objetivos>=2 && objetivos<=5) {
-					VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos);
+					VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos, this);
 
 					setVisible(false);
 					ventanaMatriz.pack();

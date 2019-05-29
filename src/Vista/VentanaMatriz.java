@@ -15,16 +15,19 @@ public class VentanaMatriz extends JFrame implements ActionListener {
 	int o = 0;
 	Matriz matriz;
 	Ayudas ayudas;
-
-	public VentanaMatriz(int tamX, int tamY, Datos datos, int tor, int let, int obj) {
+	VentanaPrincipal vp;
+	
+	public VentanaMatriz(int tamX, int tamY, Datos datos, int tor, int let, int obj, VentanaPrincipal vp) {
 		ayudas = new Ayudas();
+		this.vp = vp;
 		x = tamX;
 		y = tamY;
 		t = tor;
 		l = let;
 		o = obj;
-		matriz = new Matriz(x, y, t, l, o);
+		matriz = new Matriz(x, y, t, l, o, this, vp);
 		setResizable(false);
+
 		setLayout(null);
 		actionListener(this);
 
@@ -49,7 +52,9 @@ public class VentanaMatriz extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand() == "ins") {
 			JOptionPane.showMessageDialog(null, "HOLA");
-
 		}
+	}
+	public Ayudas getAyudas() {
+		return ayudas;
 	}
 }

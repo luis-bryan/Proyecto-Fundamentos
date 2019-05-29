@@ -1,18 +1,17 @@
 package Controlador;
 
-import javax.swing.Timer;
-
 import Vista.Sonidos;
 import Vista.VentanaPrincipal;
 
 public class Control {
 	VentanaPrincipal ventanaPrincipal;
-
+	Sonidos sonido;
 	public Control() {
+		sonido = new Sonidos();
 		ventanaPrincipal = new VentanaPrincipal();
 		ventanaPrincipal.pack();
 		while (true) {
-			Sonidos.reproducir();
+			sonido.reproducir();
 		}
 	}
 
