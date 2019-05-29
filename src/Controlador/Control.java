@@ -10,9 +10,9 @@ public class Control {
 		sonido = new Sonidos();
 		ventanaPrincipal = new VentanaPrincipal();
 		ventanaPrincipal.pack();
-		while(true) {
+		while (true) {
 			sonido.reproducir();
 		}
 	}
-	
+
 }

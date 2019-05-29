@@ -6,5 +6,5 @@ public class Jugador {
 	public static byte getJugador() {
 		return jugador;
 	}
-	
+
 }

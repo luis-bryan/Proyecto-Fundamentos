@@ -26,7 +26,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	public VentanaPrincipal() {
 		setTitle("MENU BOSQUECILLO");
 		setSize(800, 200);
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(5, 1));
 
@@ -81,39 +81,40 @@ try {
 	JOptionPane.showMessageDialog(null, ".:DIGITE NUEVAMENTE LOS DATOS:.","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 }finally {
 
-		Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
+	Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
 	System.out.println("XY");
-		if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
-			int auxiliar =(filas*columnas)/8;
-			int auxiliar2 = (filas*columnas)/16;
-			int auxiliar3 = (filas*columnas)/5;
-			if(tormentosas<=(filas*columnas)/8) {
-				if(letales<=(filas*columnas)/16) {
-					if(objetivos>=2 && objetivos<=5) {
-						if(muros<=(filas*columnas)/5) {
-					VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos, this, muros);
+	if(filas <=20 && filas>=5 && columnas<=20 && columnas>=5) {
+		int auxiliar =(filas*columnas)/8;
+		int auxiliar2 = (filas*columnas)/16;
+		int auxiliar3 = (filas*columnas)/5;
+		if(tormentosas<=(filas*columnas)/8) {
+			if(letales<=(filas*columnas)/16) {
+				if(objetivos>=2 && objetivos<=5) {
+					if(muros<=(filas*columnas)/5) {
+						VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos, this, muros);
 
-					setVisible(false);
-					ventanaMatriz.pack();
-					ventanaMatriz.setSize(500,500);
-					ventanaMatriz.setVisible(true);
-						}else {
-							JOptionPane.showMessageDialog(null, "El numero de muros permitido es: "+ auxiliar3,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
-						}
-	
+						setVisible(false);
+						ventanaMatriz.pack();
+						ventanaMatriz.setSize(500,500);
+						ventanaMatriz.setVisible(true);
+						ventanaMatriz.setExtendedState(MAXIMIZED_BOTH);
 					}else {
-						JOptionPane.showMessageDialog(null, "Numero de Objetivos invalido","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El numero de muros permitido es: "+ auxiliar3,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 					}
-				}else {
-					JOptionPane.showMessageDialog(null, "El numero de letales permitido es: "+ auxiliar2,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 
+				}else {
+					JOptionPane.showMessageDialog(null, "Numero de Objetivos invalido","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: "+ auxiliar,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "El numero de letales permitido es: "+ auxiliar2,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 
 			}
+		}else {
+			JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: "+ auxiliar,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 
 		}
+
 	}
 }
+	}
 }
