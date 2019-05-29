@@ -76,7 +76,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 			letales = Integer.parseInt(auxl);
 			String auxm = pBestias.getCampo_numero3().getText();
 			muros = Integer.parseInt(auxm);
-			System.out.println("X");
 		} catch (java.lang.NumberFormatException ex) {
 			JOptionPane.showMessageDialog(null, ".:DIGITE NUEVAMENTE LOS DATOS:.", "ADVERTENCIA",
 					JOptionPane.WARNING_MESSAGE);
@@ -91,7 +90,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 					if (letales <= (filas * columnas) / 16) {
 						if (objetivos >= 2 && objetivos <= 5) {
 							VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,
-									letales, objetivos, this);
+									letales, objetivos, this, muros);
 
 							setVisible(false);
 							ventanaMatriz.pack();
@@ -112,10 +111,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 				} else {
 					JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: " + auxiliar,
 							"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-
 				}
-
 			}
+
 		}
 	}
 }

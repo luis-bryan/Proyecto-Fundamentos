@@ -13,11 +13,12 @@ public class VentanaMatriz extends JFrame implements ActionListener {
 	int t = 0;
 	int l = 0;
 	int o = 0;
+	int m = 0;
 	Matriz matriz;
 	Ayudas ayudas;
 	VentanaPrincipal vp;
 
-	public VentanaMatriz(int tamX, int tamY, Datos datos, int tor, int let, int obj, VentanaPrincipal vp) {
+public VentanaMatriz(int tamX, int tamY, Datos datos,int tor, int let, int obj, VentanaPrincipal vp, int mur) {
 		ayudas = new Ayudas();
 		this.vp = vp;
 		x = tamX;
@@ -25,8 +26,9 @@ public class VentanaMatriz extends JFrame implements ActionListener {
 		t = tor;
 		l = let;
 		o = obj;
-		matriz = new Matriz(x, y, t, l, o, this, vp);
-		setResizable(false);
+		m = mur;
+		matriz = new Matriz(x,y,t,l,o, this, vp, m);
+		setResizable(true);
 
 		setLayout(null);
 		actionListener(this);

@@ -30,7 +30,7 @@ public class PObstaculos extends JPanel {
 		BestiasL = new JLabel("BESTIAS TORMENTOSAS:");
 		BestiasT = new JLabel("BESTIAS LETALES:");
 		Muros = new JLabel("MUROS");
-		
+
 
 		add(BestiasL);
 		add(campo_numero1);
