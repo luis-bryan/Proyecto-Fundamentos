@@ -19,7 +19,6 @@ public class PBoton extends JPanel {
 		boton_empezar.setIcon(empezar);
 		add(boton_empezar);
 
-		
 	}
 
 	public JButton getBoton_empezar() {

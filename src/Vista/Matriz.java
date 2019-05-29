@@ -200,9 +200,7 @@ public class Matriz extends JPanel implements KeyListener {
               cont1 = -1;
               cont2 = -1; 
         }else if (MatrizBotones[contX][contY] == null && (arreglochar[contX][contY] == 'C' || arreglochar[contX][contY] == 0)) {
-
         	btn = new JButton();
-
         	ImageIcon cesped = new ImageIcon(getClass().getResource("/Imagenes/futbol.jpg"));
         	btn.setIcon(cesped);
         	MatrizBotones[contX][contY] = btn;
@@ -212,8 +210,8 @@ public class Matriz extends JPanel implements KeyListener {
         }
       }
     }
-    for (int contY = 0; contY < x; contY++) {
-    	for (int contX = 0; contX < y; contX++) {
+    for (int contY = 0; contY < y; contY++) {
+    	for (int contX = 0; contX < x; contX++) {
     		System.out.println("[" + contX + "," + contY + "] [" + arreglochar[contX][contY] + "]");
     	}
     	System.out.println();
@@ -226,15 +224,24 @@ public class Matriz extends JPanel implements KeyListener {
       }
     }
   }
+  public void cambiarPos() {
+	  boolean aux = true;
+	  for (int contY = 0 ; contY < y && aux ==true; contY++) {
+		  for (int contX = 0; contX < x && aux ==true; contX++) {
+			  if(arreglochar[contX][contY]=='C') {
+				  MatrizBotones[contX][contY]= btn7;
+				  arreglochar[contX][contY]='M';
+				  aux = false;
 
-
-  @Override
+			  }	
+		  }
+	  }
+  }
   public void keyTyped(KeyEvent e) {
 
   }
 
-  @Override
-  public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {
     int m = e.getKeyCode();
 
     if (pasos > 0) {
@@ -495,14 +502,16 @@ public class Matriz extends JPanel implements KeyListener {
         v.setVisible(false);
         vp.setVisible(true);
       }
-
     }
   }
 
-  @Override
   public void keyReleased(KeyEvent e) {
 
   }
+public int getPasos() {
+	return pasos;
 }
-
-
+public void setPasos(int pasos) {
+	this.pasos = pasos;
+}
+}
