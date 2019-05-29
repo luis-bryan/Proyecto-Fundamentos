@@ -221,7 +221,18 @@ public class Matriz extends JPanel implements KeyListener {
             arreglochar[contM][contN - 1] = 'J';
             contN--;
             pasos--;
-          } else if (arreglochar[contM][contN - 2] == 'O') {
+          } else if (arreglochar[contM][contN - 2] == 'C') {
+              JButton auxCesp = MatrizBotones[contM][contN - 2];
+              JButton auxBalon = MatrizBotones[contM][contN - 1];
+              MatrizBotones[contM][contN - 2] = auxBalon;
+              MatrizBotones[contM][contN - 1] = aux;
+              MatrizBotones[contM][contN] = auxCesp;
+              arreglochar[contM][contN - 2] = 'B';
+              arreglochar[contM][contN - 1] = 'J';
+              arreglochar[contM][contN] = 'C';
+              contN--;
+              pasos--;
+            }else if (arreglochar[contM][contN - 2] == 'O') {
             JButton auxBalon = MatrizBotones[contM][contN - 1];
             MatrizBotones[contM][contN - 2] = auxBalon;
             MatrizBotones[contM][contN - 1] = aux;
@@ -230,18 +241,7 @@ public class Matriz extends JPanel implements KeyListener {
             arreglochar[contM][contN - 1] = 'J';
             arreglochar[contM][contN] = 'C';
             contN--;
-          } else if (arreglochar[contM][contN - 2] == 'C') {
-            JButton auxCesp = MatrizBotones[contM][contN - 2];
-            JButton auxBalon = MatrizBotones[contM][contN - 1];
-            MatrizBotones[contM][contN - 2] = auxBalon;
-            MatrizBotones[contM][contN - 1] = aux;
-            MatrizBotones[contM][contN] = auxCesp;
-            arreglochar[contM][contN - 2] = 'B';
-            arreglochar[contM][contN - 1] = 'J';
-            arreglochar[contM][contN] = 'C';
-            contN--;
-            pasos--;
-          }
+          } 
         }
         /*TODO:-Movimientos de las bestias
          * Quitar vida si toca a cristiano
@@ -352,7 +352,7 @@ public class Matriz extends JPanel implements KeyListener {
       }
 
       updateUI();
-      v.getAy().contador.setText("PASOS RESTANTES: " + pasos);
+      v.getAyudas().contador.setText("PASOS RESTANTES: " + pasos);
     } else if (pasos == 0) {
       int input = JOptionPane.showOptionDialog(v, "Pasos Agotados", "PASOS AGOTADOS", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
       if (input == JOptionPane.OK_OPTION) {
