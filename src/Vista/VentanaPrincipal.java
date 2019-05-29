@@ -26,7 +26,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	public VentanaPrincipal() {
 		setTitle("MENU BOSQUECILLO");
 		setSize(800, 200);
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(5, 1));
 
@@ -94,6 +94,7 @@ try {
 					ventanaMatriz.pack();
 					ventanaMatriz.setSize(500,500);
 					ventanaMatriz.setVisible(true);
+					ventanaMatriz.setExtendedState(MAXIMIZED_BOTH);;
 
 					}else {
 						JOptionPane.showMessageDialog(null, "Numero de Objetivos invalido","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);

@@ -11,9 +11,9 @@ public class Control {
 	public Control() {
 		ventanaPrincipal = new VentanaPrincipal();
 		ventanaPrincipal.pack();
-		while(true) {
+		while (true) {
 			Sonidos.reproducir();
 		}
 	}
-	
+
 }

@@ -27,18 +27,75 @@ public class Ayudas extends JPanel {
 		ayudai=new ImageIcon(getClass().getResource("/imagenes/ayuda.png"));
 		bonus=new ImageIcon(getClass().getResource("/imagenes/bonus.png"));
 		ayuda = new JButton();
-		ayuda.setIcon(ayudai);
+		ayuda.setIcon(bonus);
 		ayuda.setBackground(Color.white);
 		add(ayuda).setBounds(20, 100, 150, 100);
 		reintentar = new JButton();
 		reintentar.setIcon(reintentarimag);
 		reintentar.setBackground(Color.white);
 		add(reintentar).setBounds(20, 300, 150,100);
-		instrucciones = new JButton();
-		instrucciones.setIcon(bonus);
+		instrucciones = new JButton("ins");
+		instrucciones.setForeground(Color.white);
+		instrucciones.setIcon(ayudai);
 		instrucciones.setBackground(Color.white);
 		add(instrucciones).setBounds(20, 500, 150, 100);
 
+	}
+
+	public JLabel getContador() {
+		return contador;
+	}
+
+	public void setContador(JLabel contador) {
+		this.contador = contador;
+	}
+
+	public JButton getAyuda() {
+		return ayuda;
+	}
+
+	public void setAyuda(JButton ayuda) {
+		this.ayuda = ayuda;
+	}
+
+	public JButton getReintentar() {
+		return reintentar;
+	}
+
+	public void setReintentar(JButton reintentar) {
+		this.reintentar = reintentar;
+	}
+
+	public JButton getInstrucciones() {
+		return instrucciones;
+	}
+
+	public void setInstrucciones(JButton instrucciones) {
+		this.instrucciones = instrucciones;
+	}
+
+	public Icon getReintentarimag() {
+		return reintentarimag;
+	}
+
+	public void setReintentarimag(Icon reintentarimag) {
+		this.reintentarimag = reintentarimag;
+	}
+
+	public Icon getAyudai() {
+		return ayudai;
+	}
+
+	public void setAyudai(Icon ayudai) {
+		this.ayudai = ayudai;
+	}
+
+	public Icon getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(Icon bonus) {
+		this.bonus = bonus;
 	}
 
 }
