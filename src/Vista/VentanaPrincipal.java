@@ -1,13 +1,9 @@
 package Vista;
 
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +20,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	Sonidos musica;
 
 	public VentanaPrincipal() {
+
 		setTitle("MENU BOSQUECILLO");
 		setSize(800, 200);
 		setResizable(true);

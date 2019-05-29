@@ -17,8 +17,8 @@ public class PBoton extends JPanel {
 		empezar = new ImageIcon(getClass().getResource("/imagenes/EMPEZAR.png"));
 		boton_empezar = new JButton();
 		boton_empezar.setIcon(empezar);
-
 		add(boton_empezar);
+
 		
 	}
 

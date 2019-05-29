@@ -116,7 +116,7 @@ public class Matriz extends JPanel implements KeyListener {
 
         } else if (contX == contC && contY == contD && (arreglochar[contC][contD] == 'C' || arreglochar[contC][contD] == 0)) {
 
-          for (int c = 0; c < l; c++) {
+          for (int c = 0; c < o; c++) {
             if (arreglochar[contC][contD] == 'C' || arreglochar[contC][contD] == 0) {
               btn6 = new JButton();
 
@@ -141,7 +141,7 @@ public class Matriz extends JPanel implements KeyListener {
           contD = -1;
 
         } else if (contX == contP && contY == contQ && (arreglochar[contP][contQ] == 'C' || arreglochar[contP][contQ] == 0)) {
-          for (int a = 0; a < o; a++) {
+          for (int a = 0; a < l; a++) {
             if (arreglochar[contP][contQ] == 'C' || arreglochar[contP][contQ] == 0) {
               btn5 = new JButton();
 
@@ -203,157 +203,199 @@ public class Matriz extends JPanel implements KeyListener {
   @Override
   public void keyPressed(KeyEvent e) {
     int m = e.getKeyCode();
+
     if (pasos > 0) {
-      if (m == KeyEvent.VK_UP) {
-        JButton aux = MatrizBotones[contM][contN];
-        if (arreglochar[contM][contN - 1] == 'C') {
-          MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
-          MatrizBotones[contM][contN - 1] = aux;
-          arreglochar[contM][contN] = 'C';
-          arreglochar[contM][contN - 1] = 'J';
-          contN--;
-          pasos--;
-        } else if (arreglochar[contM][contN - 1] == 'B') {
-          if (arreglochar[contM][0] == 'B') {
-            MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
-            MatrizBotones[contM][contN - 1] = aux;
-            arreglochar[contM][contN] = 'B';
-            arreglochar[contM][contN - 1] = 'J';
-            contN--;
-            pasos--;
-          } else if (arreglochar[contM][contN - 2] == 'O') {
-            JButton auxBalon = MatrizBotones[contM][contN - 1];
-            MatrizBotones[contM][contN - 2] = auxBalon;
-            MatrizBotones[contM][contN - 1] = aux;
-            MatrizBotones[contM][contN] = btn;
-            arreglochar[contM][contN - 2] = 'B';
-            arreglochar[contM][contN - 1] = 'J';
-            arreglochar[contM][contN] = 'C';
-            contN--;
-          } else if (arreglochar[contM][contN - 2] == 'C') {
-            JButton auxCesp = MatrizBotones[contM][contN - 2];
-            JButton auxBalon = MatrizBotones[contM][contN - 1];
-            MatrizBotones[contM][contN - 2] = auxBalon;
-            MatrizBotones[contM][contN - 1] = aux;
-            MatrizBotones[contM][contN] = auxCesp;
-            arreglochar[contM][contN - 2] = 'B';
-            arreglochar[contM][contN - 1] = 'J';
-            arreglochar[contM][contN] = 'C';
-            contN--;
-            pasos--;
+
+      if ((contM != 0 && contN != 0) && (contM != arreglochar.length -1 && contN != arreglochar.length -1)) {
+        if (arreglochar[contM-1][contN]=='L'||arreglochar[contM+1][contN]=='L'||arreglochar[contM][contN-1]=='L'||arreglochar[contM][contN+1]=='L'){
+          pasos = 0;
+        } else if(arreglochar[contM-1][contN]=='T'||arreglochar[contM+1][contN]=='T'||arreglochar[contM][contN-1]=='T'||arreglochar[contM][contN+1]=='T'){
+          pasos = pasos -5;
+        }
+      } else if((contM==0 && contN!=0)&&(contM != arreglochar.length -1 && contN != arreglochar.length -1)){
+        if (arreglochar[contM+1][contN]=='L'||arreglochar[contM][contN-1]=='L'||arreglochar[contM][contN+1]=='L'){
+          pasos = 0;
+        } else if(arreglochar[contM+1][contN]=='T'||arreglochar[contM][contN-1]=='T'||arreglochar[contM][contN+1]=='T'){
+          pasos = pasos -5;
+        }
+      } else if((contM!=0 && contN==0)&&(contM != arreglochar.length -1 && contN != arreglochar.length -1)){
+        if (arreglochar[contM-1][contN]=='L'||arreglochar[contM+1][contN]=='L'||arreglochar[contM][contN+1]=='L'){
+          pasos = 0;
+        } else if(arreglochar[contM-1][contN]=='T'||arreglochar[contM+1][contN]=='T'||arreglochar[contM][contN+1]=='T'){
+          pasos = pasos -5;
+        }
+      } else if((contM==arreglochar.length-1 && contN !=arreglochar.length-1)&&(contM != arreglochar.length -1 && contN != arreglochar.length-1)){
+
+        if (arreglochar[contM-1][contN]=='L'||arreglochar[contM][contN-1]=='L'||arreglochar[contM][contN+1]=='L'){
+          pasos = 0;
+        } else if(arreglochar[contM-1][contN]=='T'||arreglochar[contM][contN-1]=='T'||arreglochar[contM][contN+1]=='T'){
+          pasos = pasos -5;
+        } else if(contM!=arreglochar.length-1 && contN ==arreglochar.length-1) {
+
+          if (arreglochar[contM - 1][contN] == 'L' || arreglochar[contM][contN - 1] == 'L' || arreglochar[contM + 1][contN] == 'L') {
+            pasos = 0;
+          } else if (arreglochar[contM - 1][contN] == 'T' || arreglochar[contM][contN - 1] == 'T' || arreglochar[contM + 1][contN] == 'T') {
+            pasos = pasos - 5;
+          }
+        }else if(contM==arreglochar.length-1 && contN ==arreglochar.length-1) {
+
+          if (arreglochar[contM - 1][contN] == 'L' || arreglochar[contM][contN - 1] == 'L' || arreglochar[contM + 1][contN] == 'L'|| arreglochar[contM][contN+1] == 'L') {
+            pasos = 0;
+          } else if (arreglochar[contM - 1][contN] == 'T' || arreglochar[contM][contN - 1] == 'T' || arreglochar[contM + 1][contN] == 'T'|| arreglochar[contM][contN+1] == 'T') {
+            pasos = pasos - 5;
           }
         }
-        /*TODO:-Movimientos de las bestias
-         * Quitar vida si toca a cristiano
-         * Pierde juego si toca a Ramos
-         * Agregar los muros
-         */
+      }
+
+    if (m == KeyEvent.VK_UP) {
+      JButton aux = MatrizBotones[contM][contN];
+      if (arreglochar[contM][contN - 1] == 'C') {
+        MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
+        MatrizBotones[contM][contN - 1] = aux;
+        arreglochar[contM][contN] = 'C';
+        arreglochar[contM][contN - 1] = 'J';
+        contN--;
+        pasos--;
+      } else if (arreglochar[contM][0] == 'B') {
+        MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
+        MatrizBotones[contM][contN - 1] = aux;
+        arreglochar[contM][contN] = 'B';
+        arreglochar[contM][contN - 1] = 'J';
+        contN--;
+        pasos--;
+      } else if (arreglochar[contM][contN - 1] == 'B') {
+        if (arreglochar[contM][contN - 2] == 'O') {
+          MatrizBotones[contM][contN - 2] = MatrizBotones[contM][contN - 1];
+          MatrizBotones[contM][contN - 1] = aux;
+
+          arreglochar[contM][contN - 2] = 'B';
+          arreglochar[contM][contN - 1] = 'J';
+          contN--;
+        } else if (arreglochar[contM][contN - 2] == 'C') {
+          JButton auxCesp = MatrizBotones[contM][contN - 2];
+          JButton auxBalon = MatrizBotones[contM][contN - 1];
+          MatrizBotones[contM][contN - 2] = auxBalon;
+          MatrizBotones[contM][contN - 1] = aux;
+          MatrizBotones[contM][contN] = auxCesp;
+          arreglochar[contM][contN - 2] = 'B';
+          arreglochar[contM][contN - 1] = 'J';
+          arreglochar[contM][contN] = 'C';
+          contN--;
+          pasos--;
+        }
+      }
+      /*TODO:-Movimientos de las bestias
+       * Quitar vida si toca a cristiano
+       * Pierde juego si toca a Ramos
+       * Agregar los muros
+       */
 
 
-      } else if (m == KeyEvent.VK_DOWN) {
-        JButton aux = MatrizBotones[contM][contN];
-        if (arreglochar[contM][contN + 1] == 'C') {
+    } else if (m == KeyEvent.VK_DOWN) {
+      JButton aux = MatrizBotones[contM][contN];
+      if (arreglochar[contM][contN + 1] == 'C') {
+        MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
+        MatrizBotones[contM][contN + 1] = aux;
+        arreglochar[contM][contN] = 'C';
+        arreglochar[contM][contN + 1] = 'J';
+        contN++;
+        pasos--;
+      } else if (arreglochar[contM][contN + 1] == 'B') {
+        if (arreglochar[contM][arreglochar.length - 1] == 'B') {
           MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
           MatrizBotones[contM][contN + 1] = aux;
-          arreglochar[contM][contN] = 'C';
+          arreglochar[contM][contN] = 'B';
           arreglochar[contM][contN + 1] = 'J';
           contN++;
           pasos--;
-        } else if (arreglochar[contM][contN + 1] == 'B') {
-          if (arreglochar[contM][arreglochar.length - 1] == 'B') {
-            MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
-            MatrizBotones[contM][contN + 1] = aux;
-            arreglochar[contM][contN] = 'B';
-            arreglochar[contM][contN + 1] = 'J';
-            contN++;
-            pasos--;
-          } else if (arreglochar[contM][contN + 2] == 'C') {
-            JButton auxCesp = MatrizBotones[contM][contN + 2];
-            JButton auxBalon = MatrizBotones[contM][contN + 1];
-            MatrizBotones[contM][contN + 2] = auxBalon;
-            MatrizBotones[contM][contN + 1] = aux;
-            MatrizBotones[contM][contN] = auxCesp;
-            arreglochar[contM][contN + 2] = 'B';
-            arreglochar[contM][contN + 1] = 'J';
-            arreglochar[contM][contN] = 'C';
-            contN++;
-            pasos--;
-          }
-
+        } else if (arreglochar[contM][contN + 2] == 'C') {
+          JButton auxCesp = MatrizBotones[contM][contN + 2];
+          JButton auxBalon = MatrizBotones[contM][contN + 1];
+          MatrizBotones[contM][contN + 2] = auxBalon;
+          MatrizBotones[contM][contN + 1] = aux;
+          MatrizBotones[contM][contN] = auxCesp;
+          arreglochar[contM][contN + 2] = 'B';
+          arreglochar[contM][contN + 1] = 'J';
+          arreglochar[contM][contN] = 'C';
+          contN++;
+          pasos--;
         }
 
-      } else if (m == KeyEvent.VK_RIGHT) {
-        JButton aux = MatrizBotones[contM][contN];
-        if (arreglochar[contM + 1][contN] == 'C') {
+      }
+
+    } else if (m == KeyEvent.VK_RIGHT) {
+      JButton aux = MatrizBotones[contM][contN];
+      if (arreglochar[contM + 1][contN] == 'C') {
+        MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
+        MatrizBotones[contM + 1][contN] = aux;
+        arreglochar[contM][contN] = 'C';
+        arreglochar[contM + 1][contN] = 'J';
+
+        contM++;
+        pasos--;
+      } else if (arreglochar[contM + 1][contN] == 'B') {
+        if (arreglochar[arreglochar.length - 1][contN] == 'B') {
           MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
           MatrizBotones[contM + 1][contN] = aux;
-          arreglochar[contM][contN] = 'C';
+          arreglochar[contM][contN] = 'B';
           arreglochar[contM + 1][contN] = 'J';
-
+          contM++;
+        } else if (arreglochar[contM + 2][contN] == 'C') {
+          JButton auxCesp = MatrizBotones[contM + 2][contN];
+          JButton auxBalon = MatrizBotones[contM + 1][contN];
+          MatrizBotones[contM + 2][contN] = auxBalon;
+          MatrizBotones[contM + 1][contN] = aux;
+          MatrizBotones[contM][contN] = auxCesp;
+          arreglochar[contM + 2][contN] = 'B';
+          arreglochar[contM + 1][contN] = 'J';
+          arreglochar[contM][contN] = 'C';
           contM++;
           pasos--;
-        } else if (arreglochar[contM + 1][contN] == 'B') {
-          if (arreglochar[arreglochar.length - 1][contN] == 'B') {
-            MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
-            MatrizBotones[contM + 1][contN] = aux;
-            arreglochar[contM][contN] = 'B';
-            arreglochar[contM + 1][contN] = 'J';
-            contM++;
-          } else if (arreglochar[contM + 2][contN] == 'C') {
-            JButton auxCesp = MatrizBotones[contM + 2][contN];
-            JButton auxBalon = MatrizBotones[contM + 1][contN];
-            MatrizBotones[contM + 2][contN] = auxBalon;
-            MatrizBotones[contM + 1][contN] = aux;
-            MatrizBotones[contM][contN] = auxCesp;
-            arreglochar[contM + 2][contN] = 'B';
-            arreglochar[contM + 1][contN] = 'J';
-            arreglochar[contM][contN] = 'C';
-            contM++;
-            pasos--;
-          }
-
         }
 
-      } else if (m == KeyEvent.VK_LEFT) {
-        JButton aux = MatrizBotones[contM][contN];
-        if (arreglochar[contM - 1][contN] == 'C') {
+      }
+
+    } else if (m == KeyEvent.VK_LEFT) {
+      JButton aux = MatrizBotones[contM][contN];
+      if (arreglochar[contM - 1][contN] == 'C') {
+        MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
+        MatrizBotones[contM - 1][contN] = aux;
+        arreglochar[contM][contN] = 'C';
+        arreglochar[contM - 1][contN] = 'J';
+        contM--;
+        pasos--;
+      } else if (arreglochar[contM - 1][contN] == 'B') {
+        if (arreglochar[0][contN] == 'B') {
           MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
           MatrizBotones[contM - 1][contN] = aux;
-          arreglochar[contM][contN] = 'C';
+          arreglochar[contM][contN] = 'B';
           arreglochar[contM - 1][contN] = 'J';
           contM--;
+        } else if (arreglochar[contM - 2][contN] == 'C') {
+          JButton auxCesp = MatrizBotones[contM - 2][contN];
+          JButton auxBalon = MatrizBotones[contM - 1][contN];
+          MatrizBotones[contM - 2][contN] = auxBalon;
+          MatrizBotones[contM - 1][contN] = aux;
+          MatrizBotones[contM][contN] = auxCesp;
+          arreglochar[contM - 2][contN] = 'B';
+          arreglochar[contM - 1][contN] = 'J';
+          arreglochar[contM][contN] = 'C';
+          contM--;
           pasos--;
-        } else if (arreglochar[contM - 1][contN] == 'B') {
-          if (arreglochar[0][contN] == 'B') {
-            MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
-            MatrizBotones[contM - 1][contN] = aux;
-            arreglochar[contM][contN] = 'B';
-            arreglochar[contM - 1][contN] = 'J';
-            contM--;
-          } else if (arreglochar[contM - 2][contN] == 'C') {
-            JButton auxCesp = MatrizBotones[contM - 2][contN];
-            JButton auxBalon = MatrizBotones[contM - 1][contN];
-            MatrizBotones[contM - 2][contN] = auxBalon;
-            MatrizBotones[contM - 1][contN] = aux;
-            MatrizBotones[contM][contN] = auxCesp;
-            arreglochar[contM - 2][contN] = 'B';
-            arreglochar[contM - 1][contN] = 'J';
-            arreglochar[contM][contN] = 'C';
-            contM--;
-            pasos--;
-          }
-
         }
 
       }
-      for (int qy = 0; qy < x; qy++) {
-        for (int qx = 0; qx < y; qx++)
-          add(MatrizBotones[qx][qy]);
-      }
 
-      updateUI();
-      v.getAy().contador.setText("PASOS RESTANTES: " + pasos);
-    } else if (pasos == 0) {
+    }
+
+    for (int qy = 0; qy < x; qy++) {
+      for (int qx = 0; qx < y; qx++)
+        add(MatrizBotones[qx][qy]);
+    }
+
+    updateUI();
+    v.getAy().contador.setText("PASOS RESTANTES: " + pasos);
+  } else if (pasos <= 0) {
       int input = JOptionPane.showOptionDialog(v, "Pasos Agotados", "PASOS AGOTADOS", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
       if (input == JOptionPane.OK_OPTION) {
         v.setVisible(false);
