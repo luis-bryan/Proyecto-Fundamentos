@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Arrays;
 
 public class Matriz extends JPanel implements KeyListener {
   int x;
@@ -27,7 +26,7 @@ public class Matriz extends JPanel implements KeyListener {
   JButton btn4;
   JButton btn5;
   JButton btn6;
-  final JButton MatrizBotones[][];
+  JButton MatrizBotones[][];
   char arreglochar[][];
   int t;
   int l;
@@ -126,7 +125,7 @@ public class Matriz extends JPanel implements KeyListener {
                 btn6.getMaximumSize().height * (y + y), Image.SCALE_DEFAULT));
               btn6.setIcon(copa);
               MatrizBotones[contC][contD] = btn6;
-              arreglochar[contC][contD] = 'L';
+              arreglochar[contC][contD] = 'O';
               btn6.addKeyListener(this);
               do {
                 contC = (int) (Math.random() * x);
@@ -151,7 +150,7 @@ public class Matriz extends JPanel implements KeyListener {
                 btn5.getMaximumSize().height * (y + y), Image.SCALE_DEFAULT));
               btn5.setIcon(icono5);
               MatrizBotones[contP][contQ] = btn5;
-              arreglochar[contP][contQ] = 'O';
+              arreglochar[contP][contQ] = 'L';
               btn5.addKeyListener(this);
 
               do {
@@ -168,6 +167,7 @@ public class Matriz extends JPanel implements KeyListener {
           contQ = -1;
 
         } else if (MatrizBotones[contX][contY] == null && (arreglochar[contX][contY] == 'C' || arreglochar[contX][contY] == 0)) {
+
           btn = new JButton();
 
           ImageIcon cesped = new ImageIcon(getClass().getResource("/Imagenes/futbol.jpg"));
@@ -179,25 +179,28 @@ public class Matriz extends JPanel implements KeyListener {
         }
       }
     }
-    for (int qy = 0; qy < x; qy++) {
-      for (int qx = 0; qx < y; qx++)
-        add(MatrizBotones[qx][qy]);
+    for (int contY = 0; contY < x; contY++) {
+      for (int contX = 0; contX < y; contX++) {
+        System.out.println("[" + contX + "," + contY + "] [" + arreglochar[contX][contY] + "]");
+      }
+      System.out.println();
     }
-    v.getAy().contador.setText("PASOS RESTANTES: " + pasos);
+
+
+    for (int qy = 0; qy < x; qy++) {
+      for (int qx = 0; qx < y; qx++) {
+        add(MatrizBotones[qx][qy]);
+      }
+    }
   }
+
 
   @Override
   public void keyTyped(KeyEvent e) {
-    // TODO Auto-generated method stub
-    System.out.println("Typed");
+
   }
 
   @Override
-  public void keyReleased(KeyEvent e) {
-    // TODO Auto-generated method stub
-    System.out.println("Released");
-  }
-
   public void keyPressed(KeyEvent e) {
     int m = e.getKeyCode();
     if (pasos > 0) {
@@ -210,22 +213,41 @@ public class Matriz extends JPanel implements KeyListener {
           arreglochar[contM][contN - 1] = 'J';
           contN--;
           pasos--;
-
         } else if (arreglochar[contM][contN - 1] == 'B') {
-          if (arreglochar[contM][contN - 2] == 'C') {
-            JButton auxCesp = MatrizBotones[contM][contN - 2];
+          if (arreglochar[contM][0] == 'B') {
+            MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
+            MatrizBotones[contM][contN - 1] = aux;
+            arreglochar[contM][contN] = 'B';
+            arreglochar[contM][contN - 1] = 'J';
+            contN--;
+            pasos--;
+          } else if (arreglochar[contM][contN - 2] == 'O') {
             JButton auxBalon = MatrizBotones[contM][contN - 1];
-
             MatrizBotones[contM][contN - 2] = auxBalon;
             MatrizBotones[contM][contN - 1] = aux;
-            MatrizBotones[contM][contN] = auxCesp;
-
+            MatrizBotones[contM][contN] = btn;
             arreglochar[contM][contN - 2] = 'B';
             arreglochar[contM][contN - 1] = 'J';
             arreglochar[contM][contN] = 'C';
+            contN--;
+          } else if (arreglochar[contM][contN - 2] == 'C') {
+            JButton auxCesp = MatrizBotones[contM][contN - 2];
+            JButton auxBalon = MatrizBotones[contM][contN - 1];
+            MatrizBotones[contM][contN - 2] = auxBalon;
+            MatrizBotones[contM][contN - 1] = aux;
+            MatrizBotones[contM][contN] = auxCesp;
+            arreglochar[contM][contN - 2] = 'B';
+            arreglochar[contM][contN - 1] = 'J';
+            arreglochar[contM][contN] = 'C';
+            contN--;
+            pasos--;
           }
-
         }
+        /*TODO:-Movimientos de las bestias
+         * Quitar vida si toca a cristiano
+         * Pierde juego si toca a Ramos
+         * Agregar los muros
+         */
 
 
       } else if (m == KeyEvent.VK_DOWN) {
@@ -235,11 +257,30 @@ public class Matriz extends JPanel implements KeyListener {
           MatrizBotones[contM][contN + 1] = aux;
           arreglochar[contM][contN] = 'C';
           arreglochar[contM][contN + 1] = 'J';
-
           contN++;
           pasos--;
-        }
+        } else if (arreglochar[contM][contN + 1] == 'B') {
+          if (arreglochar[contM][arreglochar.length - 1] == 'B') {
+            MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
+            MatrizBotones[contM][contN + 1] = aux;
+            arreglochar[contM][contN] = 'B';
+            arreglochar[contM][contN + 1] = 'J';
+            contN++;
+            pasos--;
+          } else if (arreglochar[contM][contN + 2] == 'C') {
+            JButton auxCesp = MatrizBotones[contM][contN + 2];
+            JButton auxBalon = MatrizBotones[contM][contN + 1];
+            MatrizBotones[contM][contN + 2] = auxBalon;
+            MatrizBotones[contM][contN + 1] = aux;
+            MatrizBotones[contM][contN] = auxCesp;
+            arreglochar[contM][contN + 2] = 'B';
+            arreglochar[contM][contN + 1] = 'J';
+            arreglochar[contM][contN] = 'C';
+            contN++;
+            pasos--;
+          }
 
+        }
 
       } else if (m == KeyEvent.VK_RIGHT) {
         JButton aux = MatrizBotones[contM][contN];
@@ -251,8 +292,27 @@ public class Matriz extends JPanel implements KeyListener {
 
           contM++;
           pasos--;
-        }
+        } else if (arreglochar[contM + 1][contN] == 'B') {
+          if (arreglochar[arreglochar.length - 1][contN] == 'B') {
+            MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
+            MatrizBotones[contM + 1][contN] = aux;
+            arreglochar[contM][contN] = 'B';
+            arreglochar[contM + 1][contN] = 'J';
+            contM++;
+          } else if (arreglochar[contM + 2][contN] == 'C') {
+            JButton auxCesp = MatrizBotones[contM + 2][contN];
+            JButton auxBalon = MatrizBotones[contM + 1][contN];
+            MatrizBotones[contM + 2][contN] = auxBalon;
+            MatrizBotones[contM + 1][contN] = aux;
+            MatrizBotones[contM][contN] = auxCesp;
+            arreglochar[contM + 2][contN] = 'B';
+            arreglochar[contM + 1][contN] = 'J';
+            arreglochar[contM][contN] = 'C';
+            contM++;
+            pasos--;
+          }
 
+        }
 
       } else if (m == KeyEvent.VK_LEFT) {
         JButton aux = MatrizBotones[contM][contN];
@@ -263,6 +323,26 @@ public class Matriz extends JPanel implements KeyListener {
           arreglochar[contM - 1][contN] = 'J';
           contM--;
           pasos--;
+        } else if (arreglochar[contM - 1][contN] == 'B') {
+          if (arreglochar[0][contN] == 'B') {
+            MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
+            MatrizBotones[contM - 1][contN] = aux;
+            arreglochar[contM][contN] = 'B';
+            arreglochar[contM - 1][contN] = 'J';
+            contM--;
+          } else if (arreglochar[contM - 2][contN] == 'C') {
+            JButton auxCesp = MatrizBotones[contM - 2][contN];
+            JButton auxBalon = MatrizBotones[contM - 1][contN];
+            MatrizBotones[contM - 2][contN] = auxBalon;
+            MatrizBotones[contM - 1][contN] = aux;
+            MatrizBotones[contM][contN] = auxCesp;
+            arreglochar[contM - 2][contN] = 'B';
+            arreglochar[contM - 1][contN] = 'J';
+            arreglochar[contM][contN] = 'C';
+            contM--;
+            pasos--;
+          }
+
         }
 
       }
@@ -275,11 +355,18 @@ public class Matriz extends JPanel implements KeyListener {
       v.getAy().contador.setText("PASOS RESTANTES: " + pasos);
     } else if (pasos == 0) {
       int input = JOptionPane.showOptionDialog(v, "Pasos Agotados", "PASOS AGOTADOS", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-      if (input == JOptionPane.OK_OPTION){
+      if (input == JOptionPane.OK_OPTION) {
         v.setVisible(false);
         vp.setVisible(true);
       }
 
     }
   }
+
+  @Override
+  public void keyReleased(KeyEvent e) {
+
+  }
 }
+
+
