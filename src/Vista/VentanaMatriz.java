@@ -82,6 +82,7 @@ public VentanaMatriz(int tamX, int tamY, Datos datos,int tor, int let, int obj, 
 			if (input == JOptionPane.YES_OPTION) {
 				int sumarpasosbonus = matriz.getPasos();
 				matriz.setPasos(sumarpasosbonus + 10);
+				matriz.cambiarPos();
 
 			}
 
