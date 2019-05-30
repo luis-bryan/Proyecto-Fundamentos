@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class VentanaMatriz extends JFrame implements ActionListener {
   int x = 0;
-  int y = 0;
   int t = 0;
   int l = 0;
   int o = 0;
@@ -36,7 +35,7 @@ public class VentanaMatriz extends JFrame implements ActionListener {
     o = obj;
     m = mur;
     matriz = new Matriz(x, t, l, o, this, vp, m); /**Crea un objeto de matriz, que contiene tamaño, cant. tormentosos, cant. letales, cant. objetivos, ventana matriz, ventana principal y cantidad de muros.*/
-    setResizable(true);
+    setResizable(false);
 
     setLayout(null);
     actionListener(this);
@@ -45,7 +44,7 @@ public class VentanaMatriz extends JFrame implements ActionListener {
     add(matriz);
     matriz.setBounds(150, 0, Toolkit.getDefaultToolkit().getScreenSize().width - 320,
       Toolkit.getDefaultToolkit().getScreenSize().height - 63);
-    matriz.updateUI();
+    //matriz.updateUI();
     add(ayudas).setBounds(Toolkit.getDefaultToolkit().getScreenSize().width - 180, 0, 400, 600);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

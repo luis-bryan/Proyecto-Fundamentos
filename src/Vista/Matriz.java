@@ -89,8 +89,8 @@ public class Matriz extends JPanel implements KeyListener {
         /**Se genera el jugador*/
         if (contX == contM && contY == contN && (arreglochar[contM][contN] == 'C' || arreglochar[contM][contN] == 0)) {
           ImageIcon jugador = new ImageIcon(getClass().getResource("/imagenes/messifinal.jpg"));
-          Icon icono = new ImageIcon(jugador.getImage().getScaledInstance(btn2.getMaximumSize().width * (x + x),
-            btn2.getMaximumSize().height * (x + x), Image.SCALE_DEFAULT));
+          Icon icono = new ImageIcon(jugador.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().height / ((x)-320),
+            Toolkit.getDefaultToolkit().getScreenSize().height / (x), Image.SCALE_DEFAULT));
           btn2.setIcon(icono);
 
           MatrizBotones[contM][contN] = btn2;
@@ -101,8 +101,8 @@ public class Matriz extends JPanel implements KeyListener {
         } else if (contX == contS && contY == contT && (arreglochar[contS][contT] == 'C' || arreglochar[contS][contT] == 0)) {
 /**Se genera el balon*/
           ImageIcon balon = new ImageIcon(getClass().getResource("/imagenes/balon.png"));
-          Icon icono2 = new ImageIcon(balon.getImage().getScaledInstance(btn3.getMaximumSize().width * (x + x),
-            btn3.getMaximumSize().height * (x + x), Image.SCALE_DEFAULT));
+          Icon icono2 = new ImageIcon(balon.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().height / ((x)-320),
+            Toolkit.getDefaultToolkit().getScreenSize().height / (x), Image.SCALE_DEFAULT));
           btn3.setIcon(icono2);
           MatrizBotones[contS][contT] = btn3;
           btn3.addKeyListener(this);
@@ -115,8 +115,8 @@ public class Matriz extends JPanel implements KeyListener {
               btn4 = new JButton();
 
               ImageIcon enemigo = new ImageIcon(getClass().getResource("/imagenes/cristiano.jpg"));
-              Icon icono3 = new ImageIcon(enemigo.getImage().getScaledInstance(btn4.getMaximumSize().width * (x + x),
-                btn4.getMaximumSize().height * (x + x), Image.SCALE_DEFAULT));
+              Icon icono3 = new ImageIcon(enemigo.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().height / ((x)-320),
+                Toolkit.getDefaultToolkit().getScreenSize().height / (x), Image.SCALE_DEFAULT));
               btn4.setIcon(icono3);
               MatrizBotones[contA][contB] = btn4;
               arreglochar[contA][contB] = 'T';
@@ -144,8 +144,8 @@ public class Matriz extends JPanel implements KeyListener {
               btn6 = new JButton();
 
               ImageIcon objetivo = new ImageIcon(getClass().getResource("/imagenes/copa.jpg"));
-              Icon copa = new ImageIcon(objetivo.getImage().getScaledInstance(btn6.getMaximumSize().width * (x + x),
-                btn6.getMaximumSize().height * (x + x), Image.SCALE_DEFAULT));
+              Icon copa = new ImageIcon(objetivo.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().height / ((x)-320),
+                Toolkit.getDefaultToolkit().getScreenSize().height / (x), Image.SCALE_DEFAULT));
               btn6.setIcon(copa);
               MatrizBotones[contC][contD] = btn6;
               arreglochar[contC][contD] = 'O';
@@ -170,8 +170,8 @@ public class Matriz extends JPanel implements KeyListener {
               btn5 = new JButton();
 
               ImageIcon enemigo2 = new ImageIcon(getClass().getResource("/imagenes/letal.png"));
-              Icon icono5 = new ImageIcon(enemigo2.getImage().getScaledInstance(btn5.getMaximumSize().width * (x + x),
-                btn5.getMaximumSize().height * (x + x), Image.SCALE_DEFAULT));
+              Icon icono5 = new ImageIcon(enemigo2.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().height / ((x)-320),
+                Toolkit.getDefaultToolkit().getScreenSize().height / (x), Image.SCALE_DEFAULT));
               btn5.setIcon(icono5);
               MatrizBotones[contP][contQ] = btn5;
               arreglochar[contP][contQ] = 'L';
@@ -197,8 +197,8 @@ public class Matriz extends JPanel implements KeyListener {
               btn7 = new JButton();
 
               ImageIcon muro = new ImageIcon(getClass().getResource("/imagenes/muro.jpg"));
-              Icon icono7 = new ImageIcon(muro.getImage().getScaledInstance(btn7.getMaximumSize().width * (x + x),
-                btn7.getMaximumSize().height * (x + x), Image.SCALE_DEFAULT));
+              Icon icono7 = new ImageIcon(muro.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().height / ((x)-320),
+                Toolkit.getDefaultToolkit().getScreenSize().height / (x), Image.SCALE_DEFAULT));
               btn7.setIcon(icono7);
               MatrizBotones[cont1][cont2] = btn7;
               arreglochar[cont1][cont2] = 'M';
@@ -216,12 +216,14 @@ public class Matriz extends JPanel implements KeyListener {
           }
           cont1 = -1;
           cont2 = -1;
-        } else if (MatrizBotones[contX][contY] == null && (arreglochar[contX][contY] == 'C' || arreglochar[contX][contY] == 0)) {
+        } else if (MatrizBotones[contX][contY] == null && (arreglochar[contX][contY] == 'C'|| arreglochar[contX][contY] == 0)) {
           /**Se generan los espacios vacios*/
 
           btn = new JButton();
           ImageIcon cesped = new ImageIcon(getClass().getResource("/Imagenes/futbol.jpg"));
-          btn.setIcon(cesped);
+          Icon iconC = new ImageIcon(cesped.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().height / ((x)-320),
+            Toolkit.getDefaultToolkit().getScreenSize().height / (x), Image.SCALE_DEFAULT));
+          btn.setIcon(iconC);
           MatrizBotones[contX][contY] = btn;
           arreglochar[contX][contY] = 'C';
           btn.addKeyListener(this);
@@ -418,7 +420,7 @@ public class Matriz extends JPanel implements KeyListener {
             MatrizBotones[contM][contN] = auxCesped;
             arreglochar[contM][contN - 2] = 'B';
             arreglochar[contM][contN - 1] = 'J';
-            arreglochar[contM][contN] = 'C';
+            arreglochar[contM][contN] = 'M';
             juego_ganar++;
             v.getAyudas().getContadorPuntos().setText("Puntos obtenidos: " + juego_ganar);
             contN--;
@@ -431,7 +433,7 @@ public class Matriz extends JPanel implements KeyListener {
             MatrizBotones[contM][contN] = auxCesped;
             arreglochar[contM][contN - 2] = 'B';
             arreglochar[contM][contN - 1] = 'J';
-            arreglochar[contM][contN] = 'M';
+            arreglochar[contM][contN] = 'C';
             contN--;
             pasos--;
           } else if (arreglochar[contM][contN - 2] == 'M') {
@@ -442,9 +444,7 @@ public class Matriz extends JPanel implements KeyListener {
             contN--;
             pasos--;
           }
-
         }
-
 
       } else if (m == KeyEvent.VK_DOWN) {
         JButton aux = MatrizBotones[contM][contN];
@@ -607,7 +607,6 @@ public class Matriz extends JPanel implements KeyListener {
           add(MatrizBotones[qx][qy]);
         }
       }
-      updateUI();
       v.getAyudas().contador.setText("PASOS RESTANTES: " + pasos);
       if (juego_ganar == o) {
         /**Se valida si el jugador ya posee todos los objetivos*/

@@ -6,19 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaPrincipal extends JFrame implements ActionListener {
-  PTamaño pTamaño;
-  PObstaculos pBestias;
-  PObjetivos pObjetivos;
-  PBoton pBoton;
-  ActionListener oyente;
-  PBoton pBoton2;
-  ImageIcon bos;
-  Sonidos musica;
+  private PTamaño pTamaño;
+  private PObstaculos pBestias;
+  private PObjetivos pObjetivos;
+  private PBoton pBoton;
+  private ImageIcon bos;
 
   public VentanaPrincipal() {
     //Se crea la ventana Principal
     setTitle("MENU BOSQUECILLO");//Titulo
-    setSize(800, 200);//Tamaño
     setResizable(false);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setLayout(new GridLayout(5, 1)); //Layout
@@ -76,11 +72,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         letales = Integer.parseInt(auxl);
         String auxm = pBestias.getCampo_numero3().getText();
         muros = Integer.parseInt(auxm);
-
-      } catch (java.lang.NumberFormatException ex) {
+      } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(null, ".:DIGITE NUEVAMENTE LOS DATOS:.", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         /**
-         *  Se comprueba que los valores no tengan letras o espacions
+         *  Se comprueba que los valores no tengan letras o espacios
          */
       }
 
@@ -88,19 +83,17 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
       /**
        * Se validan los datos
        */
-      if (filas <= 20 && filas >= 5 || columnas <= 20 && columnas >= 5) {
+      if (filas <= 20 && filas >= 5) {
         int auxiliar = (filas * filas) / 8;
         int auxiliar2 = (filas * filas) / 16;
         int auxiliar3 = (filas * filas) / 5;
-        if (tormentosas <= (filas * filas) / 8) {
-          if (letales <= (filas * filas) / 16) {
+        if (tormentosas <= auxiliar) {
+          if (letales <= auxiliar2) {
             if (objetivos >= 2 && objetivos <= 5) {
-              if (muros <= (filas * filas) / 5) {
+              if (muros <= auxiliar3) {
                 VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, datos, tormentosas, letales, objetivos, this, muros);
-
                 setVisible(false);
                 ventanaMatriz.pack();
-                ventanaMatriz.setSize(500, 500);
                 ventanaMatriz.setVisible(true);
                 ventanaMatriz.setExtendedState(MAXIMIZED_BOTH);
                 //Si algun dato es incoherente se le informa al usuario
@@ -121,10 +114,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
           JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: " + auxiliar,
             "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
-      } else if (filas <= 5 || columnas <= 5) {
+      } else if (filas <= 5) {
         JOptionPane.showMessageDialog(null, "El tamaño permitido es minimo 5", "ADVERTENCIA",
           JOptionPane.WARNING_MESSAGE);
-      } else if (filas >= 20 || columnas >= 20) {
+      } else if (filas >= 20) {
         JOptionPane.showMessageDialog(null, "El tamaño permitido es maximo 20", "ADVERTENCIA",
           JOptionPane.WARNING_MESSAGE);
       }
