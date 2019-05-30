@@ -64,7 +64,7 @@ public class Matriz extends JPanel implements KeyListener {
     contQ = (int) (Math.random() * y);
     cont1 = (int) (Math.random() * x);
     cont2 = (int) (Math.random() * y);
-    
+
     btn3 = new JButton();
     btn2 = new JButton();
     for (int contY = 0; contY < y; contY++) {
@@ -174,47 +174,47 @@ public class Matriz extends JPanel implements KeyListener {
           contP = -1;
           contQ = -1;
 
-        }else if (contX == cont1&& contY == cont2 && (arreglochar[cont1][cont2] == 'C' || arreglochar[cont1][cont2] == 0)) {
-            for (int f = 0; f < m; f++) {
-                if (arreglochar[cont1][cont2] == 'C' || arreglochar[cont1][cont2] == 0) {
-                  btn7 = new JButton();
+        } else if (contX == cont1 && contY == cont2 && (arreglochar[cont1][cont2] == 'C' || arreglochar[cont1][cont2] == 0)) {
+          for (int f = 0; f < m; f++) {
+            if (arreglochar[cont1][cont2] == 'C' || arreglochar[cont1][cont2] == 0) {
+              btn7 = new JButton();
 
-                  ImageIcon muro = new ImageIcon(getClass().getResource("/imagenes/muro.jpg"));
-                  Icon icono7 = new ImageIcon(muro.getImage().getScaledInstance(btn7.getMaximumSize().width * (x + x),
-                    btn7.getMaximumSize().height * (y + y), Image.SCALE_DEFAULT));
-                  btn7.setIcon(icono7);
-                  MatrizBotones[cont1][cont2] = btn7;
-                  arreglochar[cont1][cont2] = 'M';
-                  btn7.addKeyListener(this);
+              ImageIcon muro = new ImageIcon(getClass().getResource("/imagenes/muro.jpg"));
+              Icon icono7 = new ImageIcon(muro.getImage().getScaledInstance(btn7.getMaximumSize().width * (x + x),
+                btn7.getMaximumSize().height * (y + y), Image.SCALE_DEFAULT));
+              btn7.setIcon(icono7);
+              MatrizBotones[cont1][cont2] = btn7;
+              arreglochar[cont1][cont2] = 'M';
+              btn7.addKeyListener(this);
 
-                  do {
-                    cont1 = (int) (Math.random() * x);
-                    cont2 = (int) (Math.random() * y);
-                  } while (MatrizBotones[cont1][cont2] == null);
-                } else {
-                  cont1 = (int) (Math.random() * x);
-                  cont2 = (int) (Math.random() * y);
-                  f = f - 1;
-                }
-              }
-              cont1 = -1;
-              cont2 = -1; 
-        }else if (MatrizBotones[contX][contY] == null && (arreglochar[contX][contY] == 'C' || arreglochar[contX][contY] == 0)) {
-        	btn = new JButton();
-        	ImageIcon cesped = new ImageIcon(getClass().getResource("/Imagenes/futbol.jpg"));
-        	btn.setIcon(cesped);
-        	MatrizBotones[contX][contY] = btn;
-        	arreglochar[contX][contY] = 'C';
-        	btn.addKeyListener(this);
+              do {
+                cont1 = (int) (Math.random() * x);
+                cont2 = (int) (Math.random() * y);
+              } while (MatrizBotones[cont1][cont2] == null);
+            } else {
+              cont1 = (int) (Math.random() * x);
+              cont2 = (int) (Math.random() * y);
+              f = f - 1;
+            }
+          }
+          cont1 = -1;
+          cont2 = -1;
+        } else if (MatrizBotones[contX][contY] == null && (arreglochar[contX][contY] == 'C' || arreglochar[contX][contY] == 0)) {
+          btn = new JButton();
+          ImageIcon cesped = new ImageIcon(getClass().getResource("/Imagenes/futbol.jpg"));
+          btn.setIcon(cesped);
+          MatrizBotones[contX][contY] = btn;
+          arreglochar[contX][contY] = 'C';
+          btn.addKeyListener(this);
 
         }
       }
     }
     for (int contY = 0; contY < y; contY++) {
-    	for (int contX = 0; contX < x; contX++) {
-    		System.out.println("[" + contX + "," + contY + "] [" + arreglochar[contX][contY] + "]");
-    	}
-    	System.out.println();
+      for (int contX = 0; contX < x; contX++) {
+        System.out.println("[" + contX + "," + contY + "] [" + arreglochar[contX][contY] + "]");
+      }
+      System.out.println();
     }
 
 
@@ -223,71 +223,150 @@ public class Matriz extends JPanel implements KeyListener {
         add(MatrizBotones[qx][qy]);
       }
     }
-  }
-  public void cambiarPos() {
-	  boolean aux = true;
-	  for (int contY = 0 ; contY < y && aux ==true; contY++) {
-		  for (int contX = 0; contX < x && aux ==true; contX++) {
-			  if(arreglochar[contX][contY]=='C') {
-				  MatrizBotones[contX][contY]= btn7;
-				  arreglochar[contX][contY]='M';
-				  aux = false;
+    v.getAyudas().contador.setText("PASOS RESTANTES: " + pasos);
 
-			  }	
-		  }
-	  }
   }
+
+  public void cambiarPos() {
+    boolean aux = true;
+    for (int contY = 0; contY < y && aux == true; contY++) {
+      for (int contX = 0; contX < x && aux == true; contX++) {
+        if (arreglochar[contX][contY] == 'C') {
+          MatrizBotones[contX][contY] = btn7;
+          arreglochar[contX][contY] = 'M';
+          aux = false;
+
+        }
+      }
+    }
+  }
+
   public void keyTyped(KeyEvent e) {
 
   }
 
-    public void keyPressed(KeyEvent e) {
+  public void keyPressed(KeyEvent e) {
     int m = e.getKeyCode();
 
     if (pasos > 0) {
 
-      if ((contM != 0 && contN != 0) && (contM != arreglochar.length -1 && contN != arreglochar.length -1)) {
-        if (arreglochar[contM-1][contN]=='L'||arreglochar[contM+1][contN]=='L'||arreglochar[contM][contN-1]=='L'||arreglochar[contM][contN+1]=='L'){
+      if (contM == 0 && contN == arreglochar.length - 1) {
+        if (arreglochar[contM + 1][contN] == 'L') {
           pasos = 0;
-        } else if(arreglochar[contM-1][contN]=='T'||arreglochar[contM+1][contN]=='T'||arreglochar[contM][contN-1]=='T'||arreglochar[contM][contN+1]=='T'){
-          pasos = pasos -5;
+        } else if (arreglochar[contM + 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN - 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN - 1] == 'T') {
+          pasos = pasos - 5;
         }
-      } else if((contM==0 && contN!=0)&&(contM != arreglochar.length -1 && contN != arreglochar.length -1)){
-        if (arreglochar[contM+1][contN]=='L'||arreglochar[contM][contN-1]=='L'||arreglochar[contM][contN+1]=='L'){
+      } else if (contM == 0 && contN == 0) {
+        if (arreglochar[contM + 1][contN] == 'L') {
           pasos = 0;
-        } else if(arreglochar[contM+1][contN]=='T'||arreglochar[contM][contN-1]=='T'||arreglochar[contM][contN+1]=='T'){
-          pasos = pasos -5;
+        } else if (arreglochar[contM + 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN + 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN + 1] == 'T') {
+          pasos = pasos - 5;
         }
-      } else if((contM!=0 && contN==0)&&(contM != arreglochar.length -1 && contN != arreglochar.length -1)){
-        if (arreglochar[contM-1][contN]=='L'||arreglochar[contM+1][contN]=='L'||arreglochar[contM][contN+1]=='L'){
+      } else if (contN == 0 && contM == arreglochar.length -1) {
+        if (arreglochar[contM - 1][contN] == 'L') {
           pasos = 0;
-        } else if(arreglochar[contM-1][contN]=='T'||arreglochar[contM+1][contN]=='T'||arreglochar[contM][contN+1]=='T'){
-          pasos = pasos -5;
+        } else if (arreglochar[contM - 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN + 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN + 1] == 'T') {
+          pasos = pasos - 5;
         }
-      } else if((contM==arreglochar.length-1 && contN !=arreglochar.length-1)&&(contM != arreglochar.length -1 && contN != arreglochar.length-1)){
-
-        if (arreglochar[contM-1][contN]=='L'||arreglochar[contM][contN-1]=='L'||arreglochar[contM][contN+1]=='L'){
+      } else if (contN == arreglochar.length -1 && contM == arreglochar.length-1) {
+        if (arreglochar[contM - 1][contN] == 'L') {
           pasos = 0;
-        } else if(arreglochar[contM-1][contN]=='T'||arreglochar[contM][contN-1]=='T'||arreglochar[contM][contN+1]=='T'){
-          pasos = pasos -5;
-        } else if(contM!=arreglochar.length-1 && contN ==arreglochar.length-1) {
-
-          if (arreglochar[contM - 1][contN] == 'L' || arreglochar[contM][contN - 1] == 'L' || arreglochar[contM + 1][contN] == 'L') {
-            pasos = 0;
-          } else if (arreglochar[contM - 1][contN] == 'T' || arreglochar[contM][contN - 1] == 'T' || arreglochar[contM + 1][contN] == 'T') {
-            pasos = pasos - 5;
-          }
-        }else if(contM==arreglochar.length-1 && contN ==arreglochar.length-1) {
-
-          if (arreglochar[contM - 1][contN] == 'L' || arreglochar[contM][contN - 1] == 'L' || arreglochar[contM + 1][contN] == 'L'|| arreglochar[contM][contN+1] == 'L') {
-            pasos = 0;
-          } else if (arreglochar[contM - 1][contN] == 'T' || arreglochar[contM][contN - 1] == 'T' || arreglochar[contM + 1][contN] == 'T'|| arreglochar[contM][contN+1] == 'T') {
-            pasos = pasos - 5;
-          }
+        } else if (arreglochar[contM - 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN - 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN - 1] == 'T') {
+          pasos = pasos - 5;
+        }
+      } else if (contN == arreglochar.length -1) {
+        if (arreglochar[contM - 1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM - 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } if (arreglochar[contM + 1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM + 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN - 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN - 1] == 'T') {
+          pasos = pasos - 5;
+        }
+      } else if(contM == arreglochar.length -1){
+        if (arreglochar[contM - 1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM - 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } if (arreglochar[contM][contN+1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN+1] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN - 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN - 1] == 'T') {
+          pasos = pasos - 5;
+        }
+      } else if(contM!=0 && contM!=arreglochar.length-1 && contN!=0 && contN!= arreglochar.length-1){
+        if (arreglochar[contM - 1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM - 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } if (arreglochar[contM][contN+1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN+1] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN - 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN - 1] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM+1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM+1][contN] == 'T') {
+          pasos = pasos - 5;
+        }
+      }else if (contN == 0) {
+        if (arreglochar[contM + 1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM + 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM - 1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM - 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN + 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN + 1] == 'T') {
+          pasos = pasos - 5;
+        }
+      }else if (contM == 0) {
+        if (arreglochar[contM + 1][contN] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM + 1][contN] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN - 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN - 1] == 'T') {
+          pasos = pasos - 5;
+        } else if (arreglochar[contM][contN + 1] == 'L') {
+          pasos = 0;
+        } else if (arreglochar[contM][contN + 1] == 'T') {
+          pasos = pasos - 5;
         }
       }
 
-    if (m == KeyEvent.VK_UP) {
+      if (m == KeyEvent.VK_UP) {
       JButton aux = MatrizBotones[contM][contN];
       if (arreglochar[contM][contN - 1] == 'C') {
         MatrizBotones[contM][contN] = MatrizBotones[contM][contN - 1];
@@ -368,13 +447,13 @@ public class Matriz extends JPanel implements KeyListener {
             arreglochar[contM][contN] = 'C';
             contN++;
             pasos--;
-          }else if(arreglochar[contM][contN + 2] == 'M') {
-        	  MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
-              MatrizBotones[contM][contN + 1] = aux;
-              arreglochar[contM][contN] = 'B';
-              arreglochar[contM][contN + 1] = 'J';
-              contN++;
-              pasos--;
+          } else if (arreglochar[contM][contN + 2] == 'M') {
+            MatrizBotones[contM][contN] = MatrizBotones[contM][contN + 1];
+            MatrizBotones[contM][contN + 1] = aux;
+            arreglochar[contM][contN] = 'B';
+            arreglochar[contM][contN + 1] = 'J';
+            contN++;
+            pasos--;
           }
 
         }
@@ -418,13 +497,13 @@ public class Matriz extends JPanel implements KeyListener {
             arreglochar[contM][contN] = 'C';
             contM++;
             pasos--;
-          }else if(arreglochar[contM+2][contN] =='M') {
-        	  MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
-              MatrizBotones[contM + 1][contN] = aux;
-              arreglochar[contM][contN] ='B';
-              arreglochar[contM + 1][contN] ='J';
-              contM++;
-              pasos--;
+          } else if (arreglochar[contM + 2][contN] == 'M') {
+            MatrizBotones[contM][contN] = MatrizBotones[contM + 1][contN];
+            MatrizBotones[contM + 1][contN] = aux;
+            arreglochar[contM][contN] = 'B';
+            arreglochar[contM + 1][contN] = 'J';
+            contM++;
+            pasos--;
           }
 
         }
@@ -477,13 +556,13 @@ public class Matriz extends JPanel implements KeyListener {
             arreglochar[contM][contN] = 'C';
             contM--;
             pasos--;
-          }else if(arreglochar[contM-2][contN ] == 'M') {
-        	  MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
-              MatrizBotones[contM - 1][contN] = aux;
-              arreglochar[contM][contN] = 'B';
-              arreglochar[contM - 1][contN] = 'J';
-              contM--;
-              pasos--;
+          } else if (arreglochar[contM - 2][contN] == 'M') {
+            MatrizBotones[contM][contN] = MatrizBotones[contM - 1][contN];
+            MatrizBotones[contM - 1][contN] = aux;
+            arreglochar[contM][contN] = 'B';
+            arreglochar[contM - 1][contN] = 'J';
+            contM--;
+            pasos--;
           }
         }
       }
@@ -496,22 +575,27 @@ public class Matriz extends JPanel implements KeyListener {
 
     updateUI();
     v.getAyudas().contador.setText("PASOS RESTANTES: " + pasos);
-  } else if (pasos <= 0) {
-      int input = JOptionPane.showOptionDialog(v, "Pasos Agotados", "PASOS AGOTADOS", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-      if (input == JOptionPane.OK_OPTION) {
-        v.setVisible(false);
-        vp.setVisible(true);
-      }
+  } else if(pasos <=0)
+
+  {
+    int input = JOptionPane.showOptionDialog(v, "Pasos Agotados", "PASOS AGOTADOS", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+    if (input == JOptionPane.OK_OPTION) {
+      v.setVisible(false);
+      vp.setVisible(true);
     }
   }
+
+}
 
   public void keyReleased(KeyEvent e) {
 
   }
-public int getPasos() {
-	return pasos;
-}
-public void setPasos(int pasos) {
-	this.pasos = pasos;
-}
+
+  public int getPasos() {
+    return pasos;
+  }
+
+  public void setPasos(int pasos) {
+    this.pasos = pasos;
+  }
 }
