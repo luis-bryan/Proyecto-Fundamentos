@@ -1,10 +1,9 @@
 package Vista;
 
 import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.advanced.*;
+import javazoom.jl.player.advanced.AdvancedPlayer;
 
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -16,7 +15,7 @@ public class Sonidos {
 		try {
 			File archivo = new File(classLoader.getResource("Musica/Cancion.mp3").getFile());
 			reproductor = new AdvancedPlayer(new FileInputStream(archivo));
-			//reproductor.play();
+			reproductor.play();
 
 		} catch (JavaLayerException e) {
 		} catch (FileNotFoundException es) {
