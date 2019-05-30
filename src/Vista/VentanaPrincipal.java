@@ -112,10 +112,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 								"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
 					}
 				} else if(filas <=5 || columnas<=5) {
-					JOptionPane.showMessageDialog(null, "El tamaño permitido para filas y columnas es minimo 5", "ADVERTENCIA",
+					JOptionPane.showMessageDialog(null, "El tamaño permitido es minimo 5", "ADVERTENCIA",
 							JOptionPane.WARNING_MESSAGE);
 				} else if(filas >=20 || columnas >=20) {
-					JOptionPane.showMessageDialog(null, "El tamaño permitido para filas y columnas es maximo 20", "ADVERTENCIA",
+					JOptionPane.showMessageDialog(null, "El tamaño permitido es maximo 20", "ADVERTENCIA",
 							JOptionPane.WARNING_MESSAGE);
 				}
 			}
