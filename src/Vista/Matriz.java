@@ -1,6 +1,10 @@
 package Vista;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+
+import javazoom.jl.player.advanced.jlap;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -243,6 +247,121 @@ public class Matriz extends JPanel implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int m = e.getKeyCode();
 		if (pasos > 0) {
+		      if (contM == 0 && contN == arreglochar.length - 1) {
+		          if (arreglochar[contM + 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM + 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN - 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN - 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        } else if (contM == 0 && contN == 0) {
+		          if (arreglochar[contM + 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM + 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN + 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN + 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        } else if (contN == 0 && contM == arreglochar.length -1) {
+		          if (arreglochar[contM - 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM - 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN + 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN + 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        } else if (contN == arreglochar.length -1 && contM == arreglochar.length-1) {
+		          if (arreglochar[contM - 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM - 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN - 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN - 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        } else if (contN == arreglochar.length -1) {
+		          if (arreglochar[contM - 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM - 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } if (arreglochar[contM + 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM + 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN - 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN - 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        } else if(contM == arreglochar.length -1){
+		          if (arreglochar[contM - 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM - 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } if (arreglochar[contM][contN+1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN+1] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN - 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN - 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        } else if(contM!=0 && contM!=arreglochar.length-1 && contN!=0 && contN!= arreglochar.length-1){
+		          if (arreglochar[contM - 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM - 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } if (arreglochar[contM][contN+1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN+1] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN - 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN - 1] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM+1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM+1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        }else if (contN == 0) {
+		          if (arreglochar[contM + 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM + 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM - 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM - 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN + 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN + 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        }else if (contM == 0) {
+		          if (arreglochar[contM + 1][contN] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM + 1][contN] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN - 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN - 1] == 'T') {
+		            pasos = pasos - 5;
+		          } else if (arreglochar[contM][contN + 1] == 'L') {
+		            pasos = 0;
+		          } else if (arreglochar[contM][contN + 1] == 'T') {
+		            pasos = pasos - 5;
+		          }
+		        }
 			if (m == KeyEvent.VK_UP) {
 				JButton aux = MatrizBotones[contM][contN];
 				if (arreglochar[contM][contN - 1] == 'C') {
@@ -463,18 +582,23 @@ public class Matriz extends JPanel implements KeyListener {
 				setVisible(false);
 				vp.setVisible(true);
 			}
-		} else if (pasos == 0) {
-			int input = JOptionPane.showOptionDialog(v, "Pasos Agotados", "PASOS AGOTADOS", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-			if (input == JOptionPane.OK_OPTION) {
-				v.setVisible(false);
-				vp.setVisible(true);
-			}
+		} else if (pasos <= 0) {
+			UIManager.put("OptionPane.messageFont", new FontUIResource(new Font(  
+			          "Cooper Black", Font.BOLD, 30)));
+			JOptionPane.showMessageDialog(null,"  GAME OVER","FIN DEL JUEGO",JOptionPane.DEFAULT_OPTION); 
 		}
 	}
 
 	public void keyReleased(KeyEvent e) {
 
 	}
+
+
+  public int getPasos() {
+    return pasos;
+  }
+
+  public void setPasos(int pasos) {
+    this.pasos = pasos;
+  }
 }
-
-

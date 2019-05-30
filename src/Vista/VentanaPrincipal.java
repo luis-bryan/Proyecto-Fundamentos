@@ -1,13 +1,9 @@
 package Vista;
 
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +20,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	Sonidos musica;
 
 	public VentanaPrincipal() {
+
 		setTitle("MENU BOSQUECILLO");
 		setSize(800, 200);
 		setResizable(false);
@@ -54,9 +51,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 	private void actionListener(VentanaPrincipal escuchador) {
 		pBoton.getBoton_empezar().addActionListener(escuchador);
+		pBoton.getBoton_instrucciones().addActionListener(escuchador);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+if (e.getActionCommand().equals("be")) {
 		int filas = 0;
 		int columnas = 0;
 		int objetivos = 0;
@@ -100,18 +99,36 @@ try {
 						JOptionPane.showMessageDialog(null, "El numero de muros permitido es: "+ auxiliar3,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
 					}
 
-				}else {
-					JOptionPane.showMessageDialog(null, "Numero de Objetivos invalido","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+							} else {
+								JOptionPane.showMessageDialog(null, "Numero de Objetivos invalido", "ADVERTENCIA",
+										JOptionPane.WARNING_MESSAGE);
+							}
+						} else {
+							JOptionPane.showMessageDialog(null, "El numero de letales permitido es: " + auxiliar2,
+									"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: " + auxiliar,
+								"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+					}
+				} else if(filas <=5 || columnas<=5) {
+					JOptionPane.showMessageDialog(null, "El tamaño permitido es minimo 5", "ADVERTENCIA",
+							JOptionPane.WARNING_MESSAGE);
+				} else if(filas >=20 || columnas >=20) {
+					JOptionPane.showMessageDialog(null, "El tamaño permitido es maximo 20", "ADVERTENCIA",
+							JOptionPane.WARNING_MESSAGE);
 				}
-			}else {
-				JOptionPane.showMessageDialog(null, "El numero de letales permitido es: "+ auxiliar2,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
-
 			}
-		}else {
-			JOptionPane.showMessageDialog(null, "El numero de tormentosas permitido es: "+ auxiliar,"ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
+		else if(e.getActionCommand().equals("bi"))
 
-		}
+	{
+		JOptionPane.showOptionDialog(null,
+				"INSTRUCCIONES:\n\n\t1.EL BALON DEBERA PASAR POR TODAS LAS COPAS PARA COMPLETAR EL JUEGO\n\t2.PARA EMPUJAR EL BALON MESSI DEBERA ESTAR EN UNA POSICION CONTIGUA AL BALON\n\t3.SI MESSI SE ENCUENTA CON CRISTIANO SE LE RESTARAN 5 PASOS A LOS RESTANTES\n\t4.SI MESSI SE ENCUENTRA CON SERGIO RAMOS PERDERA AUTOMATICAMENTE EL JUEGO\n\t5.EL MAXIMO DE MOVIMIENTOS PERMITIDO ES EL PRODUCTO DEL TAMAÑO X TAMAÑO EL CUAL ES DETERMINADO POR TI\n\t6.EL VALOR MAXIMO DE LAS DIMENSIONES ES DE 20 X 20 Y EL MINIMO ES DE 5 X 5\n\t ",
+				"INSTRUCCIONES", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+	}}
 
-	}
+	public Sonidos getMusica() {
+		return musica;
 	}
 }
