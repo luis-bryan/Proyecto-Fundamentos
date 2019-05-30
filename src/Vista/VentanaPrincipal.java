@@ -66,8 +66,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 try {
 		String auxf = pTamaño.getCampo_numero1().getText();
 		filas=Integer.parseInt(auxf);
-		String auxc = pTamaño.getCampo_numero2().getText();
-		columnas=Integer.parseInt(auxc);
 		String auxo = pObjetivos.getCampo_numero1().getText();
 		objetivos = Integer.parseInt(auxo);
 		String auxt = pBestias.getCampo_numero1().getText();
@@ -79,19 +77,19 @@ try {
 	System.out.println("X");
 }catch(java.lang.NumberFormatException ex) {
 	JOptionPane.showMessageDialog(null, ".:DIGITE NUEVAMENTE LOS DATOS:.","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
-}finally {
+}
 
-	Datos datos = new Datos(filas, columnas, objetivos, tormentosas, letales, muros);
+	Datos datos = new Datos(filas, objetivos, tormentosas, letales, muros);
 	System.out.println("XY");
 	if(filas <=20 && filas>=5 || columnas<=20 && columnas>=5) {
-		int auxiliar =(filas*columnas)/8;
-		int auxiliar2 = (filas*columnas)/16;
-		int auxiliar3 = (filas*columnas)/5;
-		if(tormentosas<=(filas*columnas)/8) {
-			if(letales<=(filas*columnas)/16) {
+		int auxiliar =(filas*filas)/8;
+		int auxiliar2 = (filas*filas)/16;
+		int auxiliar3 = (filas*filas)/5;
+		if(tormentosas<=(filas*filas)/8) {
+			if(letales<=(filas*filas)/16) {
 				if(objetivos>=2 && objetivos<=5) {
-					if(muros<=(filas*columnas)/5) {
-						VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, columnas, datos, tormentosas,letales,objetivos, this, muros);
+					if(muros<=(filas*filas)/5) {
+						VentanaMatriz ventanaMatriz = new VentanaMatriz(filas, datos, tormentosas,letales,objetivos, this, muros);
 
 						setVisible(false);
 						ventanaMatriz.pack();
@@ -115,6 +113,5 @@ try {
 		}
 
 	}
-}
 	}
 }

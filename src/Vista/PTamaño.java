@@ -13,23 +13,18 @@ import javax.swing.border.TitledBorder;
 
 public class PTamaño extends JPanel {
 	JTextField campo_numero1;
-	JTextField campo_numero2;
 	JLabel Filas;
-	JLabel Columnas;
+	
 
 	public PTamaño() {
 		setBorder(new CompoundBorder(new EmptyBorder(0, 0, 5, 0), new TitledBorder("TAMAÑO")));
 		setBackground(Color.white);
 		campo_numero1 = new JTextField(10);
-		campo_numero2 = new JTextField(10);
-		Filas = new JLabel("FILAS:");
-		Columnas = new JLabel("COLUMNAS:");
+		Filas = new JLabel("TAMAÑO:");
 		setLayout(new FlowLayout());
  
 		add(Filas);
 		add(campo_numero1);
-		add(Columnas);
-		add(campo_numero2);
 
 	}
 
@@ -41,14 +36,7 @@ public class PTamaño extends JPanel {
 		this.campo_numero1 = campo_numero1;
 	}
 
-	public JTextField getCampo_numero2() {
-		return campo_numero2;
-	}
-
-	public void setCampo_numero2(JTextField campo_numero2) {
-		this.campo_numero2 = campo_numero2;
-	}
-
+	
 	public JLabel getFilas() {
 		return Filas;
 	}
@@ -57,11 +45,4 @@ public class PTamaño extends JPanel {
 		Filas = filas;
 	}
 
-	public JLabel getColumnas() {
-		return Columnas;
-	}
-
-	public void setColumnas(JLabel columnas) {
-		Columnas = columnas;
-	}
 }
